@@ -4,6 +4,12 @@ const cors = require("@fastify/cors");
 const routes = require("./routes");
 const { PORT } = process.env;
 
+fastify.register(cors, {
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+});
+
 fastify.register(require("@fastify/view"), {
   engine: {
     ejs: require("ejs"),
