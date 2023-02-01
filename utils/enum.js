@@ -1,7 +1,13 @@
-ROLE = {
-  ADMIN: "admin",
-  SAKSITPS: "saksitps",
-  KOORDES: "koordes",
-  CALEG: "caleg",
+const ROLE = {
+  ADMIN: "ADMIN",
+  SAKSITPS: "SAKSI TPS",
+  KOORDES: "KOORDINATOR DESA",
+  CALEG: "CALEG",
 };
 
+const VERIFIED = {
+  TRUE: true,
+  FALSE: false,
+};
+
+module.exports = { ROLE, VERIFIED };
