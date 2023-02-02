@@ -1,32 +1,35 @@
 require("dotenv").config();
-const { User } = require("../../models");
+const { User, Verify } = require("../../models");
 const jwt = require("jsonwebtoken");
-const { VERIFIED } = process.env;
+const { VERIFIED } = require("../../utils/enum.js");
 
 module.exports = {
   verify: async (req, res) => {
     try {
-      const { token } = req.params;
+      const { token } = req.query;
 
-      const user = await User.findOne({ where: { token } });
+      const user = await User.findOne({ where: { email_token: token } });
 
       if (!user) {
         return res.code(404).send({
-          status: false,
           message: "user not found",
         });
       }
 
-      const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
-
-      const updateUser = await User.update(
+      const updatedUser = await User.update(
         {
           is_verified_account: VERIFIED.TRUE,
         },
-        { where: { id: decoded.id } }
+        {
+          where: { email_token: token },
+        }
       );
 
-      return res.redirect("http://localhost:3000/login");
+      return res.code(200).send({
+        status: true,
+        message: "user account updated successfully",
+        data: updatedUser,
+      });
     } catch (err) {
       console.log(err);
     }

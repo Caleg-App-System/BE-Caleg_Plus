@@ -16,7 +16,7 @@ async function routes(fastify, options) {
   //   c.update.activateAccount
   // );
 
-  fastify.put("/verify/:token", c.activate.verify);
+  fastify.put("/verify", c.activate.verify);
 }
 
 module.exports = routes;

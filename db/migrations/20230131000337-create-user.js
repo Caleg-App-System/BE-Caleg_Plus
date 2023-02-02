@@ -29,6 +29,9 @@ module.exports = {
       role: {
         type: Sequelize.STRING,
       },
+      email_token: {
+        type: Sequelize.STRING,
+      },
       is_verified_account: {
         type: Sequelize.BOOLEAN,
       },
