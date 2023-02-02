@@ -5,7 +5,7 @@ const routes = require("./routes");
 const { PORT } = process.env;
 
 fastify.register(cors, {
-  origin: "http://localhost:3000",
+  origin: "http://https://be-calegplus-production.up.railway.app/",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 });
