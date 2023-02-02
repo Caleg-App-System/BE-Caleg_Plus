@@ -1,13 +1,18 @@
 require("dotenv").config();
 const fastify = require("fastify")({ logger: true, prettyPrint: true });
-const cors = require("@fastify/cors");
+const cors = require("fastify-cors");
 const routes = require("./routes");
 const { PORT } = process.env;
 
 fastify.register(cors, {
-  origin: "http://https://be-calegplus-production.up.railway.app/",
+  origin: "*",
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Origin",
+    "X-Requested-With",
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
 });
 
 fastify.register(require("@fastify/view"), {
@@ -25,7 +30,6 @@ fastify.get("/", (req, res) => {
 });
 
 fastify.listen({ port: PORT }, (err, address) => {
-  address = address.replace("https://calegplus-production.up.railway.app/");
   if (err) {
     fastify.log.error(err);
     process.exit(1);
