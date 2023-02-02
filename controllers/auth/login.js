@@ -16,30 +16,6 @@ module.exports = {
         });
       }
 
-      if (!username) {
-        return res.code(400).send({
-          message: "username is required",
-        });
-      }
-
-      if (!password) {
-        return res.code(400).send({
-          message: "password is required",
-        });
-      }
-
-      if (username.length < 6) {
-        return res.code(400).send({
-          message: "username must be at least 6 characters",
-        });
-      }
-
-      if (password.length < 8) {
-        return res.code(400).send({
-          message: "password must be at least 8 characters",
-        });
-      }
-
       if (
         user.is_verified_account === VERIFIED.FALSE &&
         user.is_verified_role === VERIFIED.FALSE
@@ -49,7 +25,6 @@ module.exports = {
         });
       }
 
-      
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
         return res.code(401).send({
@@ -69,9 +44,9 @@ module.exports = {
         status: true,
         message: "user logged in successfully",
         data: {
-          token,
           user,
         },
+        token,
       });
     } catch (err) {
       console.log(err);

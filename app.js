@@ -4,6 +4,8 @@ const cors = require("fastify-cors");
 const routes = require("./routes");
 const { PORT } = process.env;
 
+fastify.register(require("@fastify/express"));
+
 fastify.register(cors, {
   origin: "*",
   allowedHeaders: [
