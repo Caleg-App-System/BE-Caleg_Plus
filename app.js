@@ -25,6 +25,7 @@ fastify.get("/", (req, res) => {
 });
 
 fastify.listen({ port: PORT }, (err, address) => {
+  address = address.replace("https://calegplus-production.up.railway.app/");
   if (err) {
     fastify.log.error(err);
     process.exit(1);
