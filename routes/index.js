@@ -6,6 +6,7 @@ async function routes(fastify, options) {
   fastify.post("/auth/login", c.login.login);
   fastify.post("/auth/register", c.register.register);
   fastify.get("/auth/getall", c.getAll.getAll);
+  fastify.get("/auth/getbyid/:id", c.getbyid.getById);
   fastify.put("/auth/activate/role/:id", {
     preHandler: mid.mustLogin,
     handler: c.update.activateRole,
@@ -16,7 +17,7 @@ async function routes(fastify, options) {
   //   c.update.activateAccount
   // );
 
-  fastify.put("/verify/:token", c.activate.verify);
+  fastify.put("/verify", c.activate.verify);
 }
 
 module.exports = routes;
