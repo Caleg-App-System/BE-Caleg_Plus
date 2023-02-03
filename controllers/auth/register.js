@@ -61,7 +61,7 @@ module.exports = {
       const templateEmail = {
         to: email.toLowerCase(),
         subject: "Email Verification",
-        html: activateAccount(`http://localhost:3000/verify?token=${token}`),
+        html: activateAccount(`http://localhost:3000/login?token=${token}`),
       };
 
       await sendEmail(templateEmail);

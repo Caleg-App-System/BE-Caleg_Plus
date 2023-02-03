@@ -6,7 +6,7 @@ const { VERIFIED } = require("../../utils/enum.js");
 module.exports = {
   verify: async (req, res) => {
     try {
-      const { token } = req.query;
+      const { token } = req.body;
 
       const user = await User.findOne({ where: { email_token: token } });
 
