@@ -16,10 +16,13 @@ module.exports = {
         });
       }
 
-      if (
-        user.is_verified_account === VERIFIED.FALSE &&
-        user.is_verified_role === VERIFIED.FALSE
-      ) {
+      if (user.is_verified_role === VERIFIED.FALSE) {
+        return res.code(401).send({
+          message: "user is not verified",
+        });
+      }
+
+      if (user.is_verified_account === VERIFIED.FALSE) {
         return res.code(401).send({
           message: "user is not verified",
         });
