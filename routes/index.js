@@ -1,5 +1,6 @@
 const c = require("../controllers/auth/index.js");
 const mid = require("../middlewares/restrict.js");
+const dataExample = require("../utils/data/data-example.json");
 
 async function routes(fastify, options) {
   // Auth
@@ -16,7 +17,22 @@ async function routes(fastify, options) {
   //   mid.mustLogin,
   //   c.update.activateAccount
   // );
+  fastify.get("/getdata", (req, res) => {
+    const data = dataExample;
 
+    if (!data) {
+      return res.code(404).send({
+        status: false,
+        message: "data not found",
+      });
+    }
+
+    return res.code(200).send({
+      status: true,
+      message: "data found",
+      data: data,
+    });
+  });
   fastify.put("/verify", c.activate.verify);
 }
 

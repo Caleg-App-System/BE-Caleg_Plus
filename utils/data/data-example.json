@@ -1,0 +1,204 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "region": "Kemranjen",
+            "village": "Alasmalang",
+            "tps": "TPS 01",
+            "dpt": 150,
+            "name": "ABDUL KHOLIK, SH., M.Si.",
+            "politicalParty": "Demokrat",
+            "totalVote": 20
+        },
+        {
+            "id": 2,
+            "region": "Kemranjen",
+            "village": "Sibalung",
+            "tps": "TPS 02",
+            "dpt": 114,
+            "name": "AGUS MUJAYANTO",
+            "politicalParty": "Gerindra",
+            "totalVote": 8
+        },
+        {
+            "id": 3,
+            "region": "Banyumas",
+            "village": "Kedunggede",
+            "tps": "TPS 01",
+            "dpt": 200,
+            "name": "AGUNG SUGIANTO",
+            "politicalParty": "Demokrat",
+            "totalVote": 5
+        },
+        {
+            "id": 4,
+            "region": "Banyumas",
+            "village": "Papringan",
+            "tps": "TPS 06",
+            "dpt": 270,
+            "name": "SAMSON, S.H.",
+            "politicalParty": "Bulan Bintang",
+            "totalVote": 18
+        },
+        {
+            "id": 5,
+            "region": "Kemranjen",
+            "village": "Alasmalang",
+            "tps": "TPS 04",
+            "dpt": 165,
+            "name": "M. HAMZAH, S.Pd., M.Si.",
+            "politicalParty": "PPP",
+            "totalVote": 11
+        },
+        {
+            "id": 6,
+            "region": "Somagede",
+            "village": "Piasa Kulon",
+            "tps": "TPS 03",
+            "dpt": 227,
+            "name": "KHOLISON, S.H.",
+            "politicalParty": "PDI Perjuangan",
+            "totalVote": 60
+        },
+        {
+            "id": 7,
+            "region": "Kalibagor",
+            "village": "Kalibagor",
+            "tps": "TPS 01",
+            "dpt": 200,
+            "name": "AGUNG SUGIANTO",
+            "politicalParty": "Demokrat",
+            "totalVote": 5
+        },
+        {
+            "id": 8,
+            "region": "Kalibagor",
+            "village": "Kaliori",
+            "tps": "TPS 06",
+            "dpt": 270,
+            "name": "SAMSON, S.H.",
+            "politicalParty": "Bulan Bintang",
+            "totalVote": 18
+        },
+        {
+            "id": 9,
+            "region": "Sokaraja",
+            "village": "Wiradadi",
+            "tps": "TPS 04",
+            "dpt": 165,
+            "name": "M. HAMZAH, S.Pd., M.Si.",
+            "politicalParty": "PPP",
+            "totalVote": 11
+        },
+        {
+            "id": 10,
+            "region": "Sokaraja",
+            "village": "Klahang",
+            "tps": "TPS 03",
+            "dpt": 227,
+            "name": "KHOLISON, S.H.",
+            "politicalParty": "PDI Perjuangan",
+            "totalVote": 60
+        },
+        {
+            "id": 11,
+            "region": "Tambak",
+            "village": "Tambak Sogra",
+            "tps": "TPS 06",
+            "dpt": 165,
+            "name": "M. HAMZAH, S.Pd., M.Si.",
+            "politicalParty": "PPP",
+            "totalVote": 11
+        },
+        {
+            "id": 12,
+            "region": "Tambak",
+            "village": "Tambak Kulon",
+            "tps": "TPS 07",
+            "dpt": 227,
+            "name": "KHOLISON, S.H.",
+            "politicalParty": "PDI Perjuangan",
+            "totalVote": 60
+        },
+        {
+            "id": 13,
+            "region": "Banyumas",
+            "village": "Kalisube",
+            "tps": "TPS 11",
+            "dpt": 150,
+            "name": "SOLIKHIN S.H",
+            "politicalParty": "Gerindra",
+            "totalVote": 45
+        },
+        {
+            "id": 14,
+            "region": "Banyumas",
+            "village": "Pekunden",
+            "tps": "TPS 12",
+            "dpt": 340,
+            "name": "AHMAD KAMRUDIN S.H",
+            "politicalParty": "PSI",
+            "totalVote": 120
+        },
+        {
+            "id": 15,
+            "region": "Banyumas",
+            "village": "Kejawar",
+            "tps": "TPS 13",
+            "dpt": 450,
+            "name": "HJ. NOVITA S.H",
+            "politicalParty": "PKS",
+            "totalVote": 98
+        },
+        {
+            "id": 16,
+            "region": "Banyumas",
+            "village": "Kalisube",
+            "tps": "TPS 02",
+            "dpt": 200,
+            "name": "SOLIKUN S.H",
+            "politicalParty": "PAN",
+            "totalVote": 66
+        },
+        {
+            "id": 17,
+            "region": "Banyumas",
+            "village": "Kalisube",
+            "tps": "TPS 02",
+            "dpt": 123,
+            "name": "SUKUR S.H",
+            "politicalParty": "Gerindra",
+            "totalVote": 78
+        },
+        {
+            "id": 18,
+            "region": "Somagede",
+            "village": "Somagede",
+            "tps": "TPS 22",
+            "dpt": 239,
+            "name": "HJ. IIN MAINDA S.H",
+            "politicalParty": "Gerindra",
+            "totalVote": 240
+        },
+        {
+            "id": 19,
+            "region": "Banyumas",
+            "village": "Sudagaran",
+            "tps": "TPS 14",
+            "dpt": 300,
+            "name": "JONATHAN S.H",
+            "politicalParty": "Gerindra",
+            "totalVote": 45
+        },
+        {
+            "id": 20,
+            "region": "Banyumas",
+            "village": "Papringan",
+            "tps": "TPS 06",
+            "dpt": 160,
+            "name": "SOLIMIN S.H",
+            "politicalParty": "Gerindra",
+            "totalVote": 76
+        }
+    ]
+}
