@@ -13,14 +13,14 @@ const {
 module.exports = {
   count: async (req, res) => {
     try {
-      const count = await Suara.count({
+      const result = await Suara.count({
         group: ["caleg_id", "tps_id", "political_party_id"],
       });
 
       return res.code(200).send({
         status: true,
         message: "count suara successfully",
-        data: count,
+        data: result,
       });
     } catch (err) {
       console.log(err);

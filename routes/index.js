@@ -21,11 +21,6 @@ async function routes(fastify, options) {
     preHandler: mid.mustLogin,
     handler: cauth.update.activateRole,
   });
-  // fastify.put(
-  //   "/auth/activate/account/:id",
-  //   mid.mustLogin,
-  //   cauth.update.activateAccount
-  // );
   fastify.put("/verify", cauth.activate.verify);
 
   // TPS
