@@ -83,16 +83,10 @@ module.exports = {
             },
           },
         ],
-        attributes: {
-          include: [
-            [sequelize.fn("COUNT", sequelize.col("caleg_id")), "totalVote"],
-          ],
-          exclude: ["createdAt", "updatedAt"],
-        },
       });
 
       const countSuara = await Suara.count({
-        group: ["caleg_id", "tps_id", "political_party_id"],
+        group: ["tps_id"],
       });
 
       const countDpp = await Dpp.count({
@@ -122,7 +116,7 @@ module.exports = {
       //   arr.push(newObj);
       // }
 
-      const finalResult = result.map((e) => {
+      const suaraResult = result.map((e) => {
         let newObj = {};
 
         // Sorting
@@ -131,8 +125,6 @@ module.exports = {
         let kecamatan = e.tps.desa.kecamatan.name;
         let desa = e.tps.desa.name;
         let tps = e.tps.name;
-        let dpt = e.dpp;
-        let totalVote = e.totalVote;
 
         // Define the object
         newObj["provinsi"] = provinsi;
@@ -140,12 +132,23 @@ module.exports = {
         newObj["kecamatan"] = kecamatan;
         newObj["desa"] = desa;
         newObj["tps"] = tps;
-        newObj["totalDpt"] = dpt;
-        newObj["totalVote"] = totalVote;
 
         return arr.push(newObj);
 
         // return e;
+      });
+
+      const dppResult = countDpp.map((e) => {
+        for (const i = 0; i <= arr.length; i++) {
+          console.log(e);
+          return (arr[i]["Total DPT"] = e.count);
+        }
+      });
+
+      const finalResult = countSuara.map((e) => {
+        for (const i = 0; i <= arr.length; i++) {
+          return (arr[i]["Total Vote"] = e.count);
+        }
       });
 
       console.log(arr);
@@ -154,7 +157,7 @@ module.exports = {
         status: true,
         message: "data retrieved",
         data: {
-          result,
+          countDpp,
         },
       });
     } catch (err) {
