@@ -74,6 +74,7 @@ module.exports = {
                   },
                 ],
                 attributes: {
+                  // include: [[sequelize.literal(`()`)]],
                   exclude: ["createdAt", "updatedAt"],
                 },
               },
@@ -83,6 +84,7 @@ module.exports = {
             },
           },
         ],
+        group: ["tps_id"],
       });
 
       const countSuara = await Suara.count({
@@ -125,6 +127,7 @@ module.exports = {
         let kecamatan = e.tps.desa.kecamatan.name;
         let desa = e.tps.desa.name;
         let tps = e.tps.name;
+        let caleg = e.caleg.name;
 
         // Define the object
         newObj["provinsi"] = provinsi;
@@ -132,32 +135,30 @@ module.exports = {
         newObj["kecamatan"] = kecamatan;
         newObj["desa"] = desa;
         newObj["tps"] = tps;
+        newObj["caleg"] = caleg;
+
+        countSuara.map((suara) => {
+          if (suara.tps_id == e.tps.id) {
+            newObj["Total Vote"] = suara.count;
+          }
+        });
+
+        countDpp.map((dpt) => {
+          if (dpt.desa_id == e.tps.desa_id) {
+            newObj["Total Dpt"] = dpt.count;
+          }
+        });
 
         return arr.push(newObj);
 
         // return e;
       });
 
-      const dppResult = countDpp.map((e) => {
-        for (const i = 0; i <= arr.length; i++) {
-          console.log(e);
-          return (arr[i]["Total DPT"] = e.count);
-        }
-      });
-
-      const finalResult = countSuara.map((e) => {
-        for (const i = 0; i <= arr.length; i++) {
-          return (arr[i]["Total Vote"] = e.count);
-        }
-      });
-
-      console.log(arr);
-
       return res.code(200).send({
         status: true,
         message: "data retrieved",
         data: {
-          countDpp,
+          arr,
         },
       });
     } catch (err) {
