@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "tps_id",
         as: "tps",
       });
+      Suara.hasMany(models.Year, {
+        foreignKey: "year_id",
+        as: "year",
+      });
     }
   }
   Suara.init(
@@ -32,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       caleg_id: DataTypes.INTEGER,
       political_party_id: DataTypes.INTEGER,
       tps_id: DataTypes.INTEGER,
-      year: DataTypes.INTEGER,
+      year_id: DataTypes.INTEGER,
     },
     {
       sequelize,

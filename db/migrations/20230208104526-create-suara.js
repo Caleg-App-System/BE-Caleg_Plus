@@ -20,7 +20,7 @@ module.exports = {
       tps_id: {
         type: Sequelize.INTEGER,
       },
-      year: {
+      year_id: {
         type: Sequelize.INTEGER,
       },
       createdAt: {

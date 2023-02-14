@@ -92,7 +92,7 @@ module.exports = {
       });
 
       const countDpp = await Dpp.count({
-        group: ["desa_id"],
+        group: ["tps_id"],
       });
 
       // Definisi new array
@@ -139,13 +139,13 @@ module.exports = {
 
         countSuara.map((suara) => {
           if (suara.tps_id == e.tps.id) {
-            newObj["Total Vote"] = suara.count;
+            newObj["TotalVote"] = suara.count;
           }
         });
 
         countDpp.map((dpt) => {
-          if (dpt.desa_id == e.tps.desa_id) {
-            newObj["Total Dpt"] = dpt.count;
+          if (dpt.tps_id == e.tps_id) {
+            newObj["TotalDpt"] = dpt.count;
           }
         });
 
