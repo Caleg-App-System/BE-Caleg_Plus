@@ -11,6 +11,9 @@ const csuara = require("../controllers/suara/index.js");
 const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
+const multer = require("fastify-multer");
+const upload = multer({ dest: "uploads/" });
+
 async function routes(fastify, options) {
   // Auth
   fastify.post("/auth/login", cauth.login.login);
@@ -39,7 +42,7 @@ async function routes(fastify, options) {
   fastify.post("/provinsi/create", cprov.create.create);
 
   // DPP
-  // fastify.post("/dpp/create", cdpp.create.create);
+  fastify.post("/dpp/create", cdpp.create.create);
   fastify.get("/dpp/count", cdpp.count.count);
 
   // Caleg
@@ -68,6 +71,14 @@ async function routes(fastify, options) {
       message: "data found",
       data: datapp,
     });
+  });
+
+  // Test Upload Multer
+  fastify.post("/uploadFile", (req, res) => {
+    preHandler: upload.single("file");
+    handler: (req, res) => {
+      res.code(200).send("success");
+    };
   });
 }
 

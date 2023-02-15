@@ -2,8 +2,11 @@ require("dotenv").config();
 const fastify = require("fastify")({ logger: true, prettyPrint: true });
 const cors = require("fastify-cors");
 const routes = require("./routes");
+const multer = require("fastify-multer");
+const upload = multer({ dest: "uploads/" });
 const { PORT } = process.env;
 
+fastify.register(multer.contentParser);
 fastify.register(require("@fastify/express"));
 
 fastify.register(cors, {
