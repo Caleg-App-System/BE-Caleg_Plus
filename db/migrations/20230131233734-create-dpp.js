@@ -20,7 +20,7 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
-      desa_id: {
+      tps_id: {
         type: Sequelize.INTEGER,
       },
       religion: {

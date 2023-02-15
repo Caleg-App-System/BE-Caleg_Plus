@@ -4,7 +4,7 @@ module.exports = {
   count: async (req, res) => {
     try {
       const result = await Dpp.count({
-        group: ["desa_id"],
+        group: ["tps_id"],
       });
 
       return res.code(200).send({

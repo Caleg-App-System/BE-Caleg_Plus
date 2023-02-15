@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         as: "suara",
       });
 
-      Dpp.belongsTo(models.Desa, {
-        foreignKey: "desa_id",
-        as: "desa",
+      Dpp.belongsTo(models.Tps, {
+        foreignKey: "tps_id",
+        as: "tps",
       });
     }
   }
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       national_id: DataTypes.STRING,
       dob: DataTypes.STRING,
-      desa_id: DataTypes.INTEGER,
+      tps_id: DataTypes.INTEGER,
       address: DataTypes.STRING,
       religion: DataTypes.STRING,
       job: DataTypes.STRING,
