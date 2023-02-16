@@ -15,7 +15,7 @@ module.exports = {
         });
       }
 
-      const created = await Suara.create({
+      const created = await Suara.bulkcreate({
         dpp_id,
         caleg_id,
         political_party_id,

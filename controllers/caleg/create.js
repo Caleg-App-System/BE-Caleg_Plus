@@ -13,7 +13,7 @@ module.exports = {
       });
     }
 
-    const created = await Caleg.create({
+    const created = await Caleg.bulkcreate({
       name,
       position,
       political_party_id,
