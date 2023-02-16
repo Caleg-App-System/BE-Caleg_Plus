@@ -74,7 +74,6 @@ module.exports = {
                   },
                 ],
                 attributes: {
-                  // include: [[sequelize.literal(`()`)]],
                   exclude: ["createdAt", "updatedAt"],
                 },
               },
@@ -128,6 +127,7 @@ module.exports = {
         let desa = e.tps.desa.name;
         let tps = e.tps.name;
         let caleg = e.caleg.name;
+        let partai = e.political_party.name;
 
         // Define the object
         newObj["provinsi"] = provinsi;
@@ -136,6 +136,7 @@ module.exports = {
         newObj["desa"] = desa;
         newObj["tps"] = tps;
         newObj["caleg"] = caleg;
+        newObj["partai"] = partai;
 
         countSuara.map((suara) => {
           if (suara.tps_id == e.tps.id) {

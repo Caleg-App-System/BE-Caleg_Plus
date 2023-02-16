@@ -23,6 +23,9 @@ module.exports = {
       tps_id: {
         type: Sequelize.INTEGER,
       },
+      caleg_id: {
+        type: Sequelize.INTEGER,
+      },
       religion: {
         type: Sequelize.STRING,
       },

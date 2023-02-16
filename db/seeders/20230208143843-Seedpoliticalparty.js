@@ -24,6 +24,26 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "PDI Perjuangan",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "PKS",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Gerindra",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "NasDem",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

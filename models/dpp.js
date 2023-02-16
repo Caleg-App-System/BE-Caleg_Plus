@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "tps_id",
         as: "tps",
       });
+
+      Dpp.belongsTo(models.Caleg, {
+        foreignKey: "caleg_id",
+        as: "caleg",
+      });
     }
   }
   Dpp.init(
@@ -25,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       national_id: DataTypes.STRING,
       dob: DataTypes.STRING,
       tps_id: DataTypes.INTEGER,
+      caleg_id: DataTypes.INTEGER,
       address: DataTypes.STRING,
       religion: DataTypes.STRING,
       job: DataTypes.STRING,

@@ -8,11 +8,12 @@ const cdpp = require("../controllers/dpp/index.js");
 const ccaleg = require("../controllers/caleg/index.js");
 const cpolitic = require("../controllers/politicalParty/index.js");
 const csuara = require("../controllers/suara/index.js");
+const cupload = require("../controllers/upload/index.js");
+
 const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
-const multer = require("fastify-multer");
-const upload = multer({ dest: "uploads/" });
+const upload = require("../middlewares/upload");
 
 async function routes(fastify, options) {
   // Auth
@@ -74,11 +75,9 @@ async function routes(fastify, options) {
   });
 
   // Test Upload Multer
-  fastify.post("/uploadFile", (req, res) => {
-    preHandler: upload.single("file");
-    handler: (req, res) => {
-      res.code(200).send("success");
-    };
+  fastify.post("/uploadFile", {
+    preHandler: upload.single("file"),
+    handler: cupload.create.upload,
   });
 }
 

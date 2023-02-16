@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "caleg_id",
         as: "caleg",
       });
+
+      Caleg.hasMany(models.Dpp, {
+        foreignKey: "caleg_id",
+        as: "caleg_dpp",
+      });
     }
   }
   Caleg.init(
