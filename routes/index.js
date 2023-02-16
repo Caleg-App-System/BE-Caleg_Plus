@@ -47,7 +47,7 @@ async function routes(fastify, options) {
   fastify.get("/dpp/count", cdpp.count.count);
 
   // Caleg
-  // fastify.post("/caleg/create", ccaleg.create.create);
+  fastify.post("/caleg/create", ccaleg.create.create);
 
   // Politic Party
   // fastify.post("/politicparty/create", cpolitic.create.create);
