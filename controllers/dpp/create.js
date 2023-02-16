@@ -24,16 +24,15 @@ module.exports = {
         });
       }
 
-      const created = await Dpp.create({
-        name,
-        national_id,
-        dob,
-        tps_id,
-        address,
-        religion,
-        job,
-        image_national_card,
-      });
+      if (user.national_id.length < 16) {
+        return res.code(409).send({
+          status: false,
+          message: "national id must be 16 digit!",
+          data: null,
+        });
+      }
+
+      const created = await Dpp.bulkcreate(req.body);
 
       return res.code(201).send({
         status: true,

@@ -32,6 +32,30 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "Tanggeran",
+          kecamatan_id: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Pekaja",
+          kecamatan_id: 2,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Kebokura",
+          kecamatan_id: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Ketanda",
+          kecamatan_id: 1,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );

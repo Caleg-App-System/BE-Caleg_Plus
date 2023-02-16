@@ -32,6 +32,30 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          name: "TPS 31",
+          desa_id: 4,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "TPS 41",
+          desa_id: 5,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "TPS 51",
+          desa_id: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "TPS 61",
+          desa_id: 7,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
