@@ -1,26 +1,30 @@
-const multer = require("multer");
+const multer = require("fastify-multer");
 
-const excelFilter = (req, file, cb) => {
-  if (
-    file.mimetype.includes("application/vnd.ms-excel") ||
-    file.mimetype.includes(
-      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
-  ) {
-    cb(null, true);
-  } else {
-    cb("Please upload only excel file", false);
-  }
-};
-
+// Set up storage for upload files
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __basedir + "/uploads");
+    cb(null, "./uploads/");
   },
   filename: (req, file, cb) => {
-    cb(null, `${Date.now()}-bezkoder-${file.originalname}`);
+    cb(null, file.originalname);
   },
 });
 
-const uploadFile = multer({ storage: storage, fileFilter: excelFilter });
-module.exports = uploadFile;
+// Define the file filter function
+const fileFilter = (req, file, cb) => {
+  const allowedExtensions = [".xlsx", ".xls"];
+  const fileExtension = file.originalname.slice(-5);
+  if (allowedExtensions.includes(fileExtension)) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+// Intialize multer middleware with file filter
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter,
+});
+
+module.exports = upload;
