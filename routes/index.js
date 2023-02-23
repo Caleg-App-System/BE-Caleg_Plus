@@ -13,7 +13,7 @@ const cupload = require("../controllers/upload/index.js");
 const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
-const upload = require("../middlewares/upload");
+const upload = require("../middlewares/upload.js");
 
 async function routes(fastify, options) {
   // Auth
@@ -51,6 +51,13 @@ async function routes(fastify, options) {
 
   // Politic Party
   // fastify.post("/politicparty/create", cpolitic.create.create);
+  fastify.post(
+    "/parpol/uploadfile",
+    {
+      preHandler: upload.single("file"),
+    },
+    cpolitic.create.create
+  );
 
   // Suara
   fastify.post("/suara/create", csuara.create.create);
@@ -75,10 +82,10 @@ async function routes(fastify, options) {
   });
 
   // Test Upload Multer
-  fastify.post("/uploadFile", {
-    preHandler: upload.single("file"),
-    handler: cupload.create.upload,
-  });
+  // fastify.post("/uploadFile", {
+  //   preHandler: upload.single("file"),
+  //   handler: cupload.create.upload,
+  // });
 }
 
 module.exports = routes;
