@@ -2,6 +2,15 @@ require("dotenv").config();
 
 const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT, DB_PORT } =
   process.env;
+  const pg = require("pg")
+
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = { rejectUnauthorized: false, }
+}
+
+const sharedConfig = {
+  client: "pg",
+}
 
 module.exports = {
   development: {
@@ -21,6 +30,8 @@ module.exports = {
     port: DB_PORT,
   },
   production: {
+    ...sharedConfig,
+    connection: process.env.DATABASE_URL,
     username: DB_USERNAME,
     password: DB_PASSWORD,
     database: DB_NAME,
