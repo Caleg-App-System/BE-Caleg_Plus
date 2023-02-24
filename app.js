@@ -34,7 +34,7 @@ fastify.get("/", (req, res) => {
   return res.send("Welcome To Our API");
 });
 
-fastify.listen({ port: PORT }, (err, address) => {
+fastify.listen({ port: PORT || 8000 }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
