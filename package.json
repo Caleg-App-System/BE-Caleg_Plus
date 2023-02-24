@@ -2,10 +2,10 @@
   "name": "be-caleg-plus",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node -r dotenv/config app.js",
-    "dev": "nodemon -r dotenv/config app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "db:create": "sequelize db:create",
     "db:migrate": "sequelize db:migrate",
     "db:migrate:undo": "sequelize db:migrate:undo:all",
