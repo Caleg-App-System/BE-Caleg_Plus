@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "calegs",
+      "Calegs",
       [
         {
           name: "Bambang S.H",
@@ -68,6 +68,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("calegs", null, {});
+    await queryInterface.bulkDelete("Calegs", null, {});
   },
 };
