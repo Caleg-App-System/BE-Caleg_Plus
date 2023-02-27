@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
       name: DataTypes.STRING,
       phone: DataTypes.STRING,
+      address: DataTypes.STRING,
       photo: DataTypes.STRING,
       role: DataTypes.STRING,
       email_token: DataTypes.STRING,
@@ -31,3 +32,5 @@ module.exports = (sequelize, DataTypes) => {
   );
   return User;
 };
+
+// test
