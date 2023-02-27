@@ -13,7 +13,7 @@ module.exports = {
       const sheetName = workBook.SheetNames[0];
       const workSheet = workBook.Sheets[sheetName];
 
-      const startCell = "A88";
+      const startCell = "C88";
       const endCell = "C412";
       const range = xlsx.utils.decode_range(`${startCell}:${endCell}`);
 
@@ -26,10 +26,13 @@ module.exports = {
             ? workSheet[cellAddress].v
             : "";
 
-          if (cellValue == cellValue.includes("Partai ")) {
-            cellValue =
-              workSheet[cellAddress] + 2 ? workSheet[cellAddress].v : "";
-          }
+          // if (cellValue == "A.1") {
+          //   cellValue =
+          //     workSheet[cellAddress] + 2 ? workSheet[cellAddress].v : "";
+          // } else {
+          //   continue;
+          // }
+
           rowData.push(cellValue);
         }
         data.push(rowData);
