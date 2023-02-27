@@ -15,6 +15,7 @@ module.exports = {
         password,
         name,
         phone,
+        address,
         photo,
         role,
         email_token,
@@ -50,6 +51,7 @@ module.exports = {
         password: hashedPassword,
         name,
         phone,
+        address,
         photo,
         role,
         email_token: token,
@@ -76,3 +78,6 @@ module.exports = {
     }
   },
 };
+
+// address : provinsi, kabupaten, kecamatan, desa
+// address : kedunggede banyumas banyumas jawa tengah
