@@ -1,40 +1,20 @@
 const { Kabupaten, Provinsi } = require("../../models");
-const dataKabupaten = require("../../utils/data/kabupaten.json");
+const adapter = require("../../helpers/adapter");
+
+const api = adapter(
+  "https://izazrizqullah.github.io/api-wilayah-indonesia/api/"
+);
 
 module.exports = {
   getAll: async (req, res) => {
     try {
-      // const kabupaten = await Kabupaten.findAll({
-      //   include: [
-      //     {
-      //       model: Provinsi,
-      //       as: "provinsi",
-      //       attributes: {
-      //         exclude: ["createdAt", "updatedAt"],
-      //       },
-      //     },
-      //   ],
-      //   attributes: {
-      //     exclude: ["createdAt", "updatedAt"],
-      //   },
-      // });
-      // res.send({
-      //   status: "success",
-      //   message: "Kabupaten retrieved successfully",
-      //   data: kabupaten,
-      // });
-      const arr = [];
-      const data = dataKabupaten.forEach((e) => {
-        const newObj = {};
-        const nameKabupaten = e.name;
-        newObj["name"] = nameKabupaten;
-        arr.push(newObj);
-      });
+      const { provinceId } = req.params;
+      const { data } = await api.get(`/regencies/${provinceId}.json`);
 
       return res.code(200).send({
         status: true,
         message: "get all data successfull",
-        data: arr,
+        data: data,
       });
     } catch (err) {
       console.log(err);
