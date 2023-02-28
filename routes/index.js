@@ -38,9 +38,11 @@ async function routes(fastify, options) {
 
   // Kabupaten
   fastify.post("/kabupaten/create", ckab.create.create);
+  fastify.get("/kabupaten/getall", ckab.getAll.getAll);
 
   // Provinsi
   fastify.post("/provinsi/create", cprov.create.create);
+  fastify.get("/provinsi/getall", cprov.getAll.getAll);
 
   // DPP
   fastify.post("/dpp/create", cdpp.create.create);

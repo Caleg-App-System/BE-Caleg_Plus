@@ -1,27 +1,30 @@
 const { Provinsi } = require("../../models");
+const fs = require("fs");
+const dataProvinsi = require("../../utils/data/province.json");
 
 module.exports = {
   create: async (req, res) => {
     try {
-      const { name } = req.body;
+      const arr = [];
+      const data = dataProvinsi.forEach(async (e) => {
+        const newObj = {};
 
-      const exist = await Provinsi.findOne({ where: { name } });
+        const provinsiName = e.name;
+        newObj["nama_provinsi"] = provinsiName;
 
-      if (exist) {
-        return res.code(409).send({
-          status: "error",
-          message: "Provinsi already exist",
-        });
-      }
-
-      const created = await Provinsi.create({
-        name,
+        arr.push(newObj);
       });
 
-      res.code(201).send({
-        status: "success",
-        message: "Provinsi created successfully",
-        data: created,
+      const result = arr.forEach((e) => {
+        Provinsi.create({
+          name: e.nama_provinsi,
+        });
+      });
+
+      return res.code(201).send({
+        status: true,
+        message: "create provinsi successful",
+        data: data,
       });
     } catch (err) {
       console.log(err);
