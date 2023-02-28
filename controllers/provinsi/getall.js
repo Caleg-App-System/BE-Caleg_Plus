@@ -1,21 +1,18 @@
 const { Provinsi } = require("../../models");
-const fs = require("fs");
-const dataProvinsi = require("../../utils/data/province.json");
+const adapter = require("../../helpers/adapter");
+
+const api = adapter(
+  "https://izazrizqullah.github.io/api-wilayah-indonesia/api/"
+);
 
 module.exports = {
   getAll: async (req, res) => {
     try {
-      const arr = [];
-      const data = dataProvinsi.forEach((e) => {
-        const newObj = {};
-        const namaProvinsi = e.name;
-        newObj["name"] = namaProvinsi;
-        arr.push(newObj);
-      });
+      const { data } = await api.get("/provinces.json");
       return res.code(200).send({
         status: true,
         message: "get all data success",
-        data: arr,
+        data: data,
       });
     } catch (err) {
       console.log(err);
