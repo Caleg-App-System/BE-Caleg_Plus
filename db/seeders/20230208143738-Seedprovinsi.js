@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "provinsis",
+      "Provinsis",
       [
         {
           name: "Jawa Tengah",
@@ -31,6 +31,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("provinsis", null, {});
+    await queryInterface.bulkDelete("Provinsis", null, {});
   },
 };

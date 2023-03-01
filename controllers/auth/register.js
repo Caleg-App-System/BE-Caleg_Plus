@@ -63,7 +63,9 @@ module.exports = {
       const templateEmail = {
         to: email.toLowerCase(),
         subject: "Email Verification",
-        html: activateAccount(`http://localhost:3000/login?token=${token}`),
+        html: activateAccount(
+          `https://caleg-plus.netlify.app/success/verification?token=${token}`
+        ),
       };
 
       await sendEmail(templateEmail);

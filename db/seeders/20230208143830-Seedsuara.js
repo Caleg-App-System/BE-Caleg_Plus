@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "suaras",
+      "Suaras",
       [
         {
           dpp_id: 1,
@@ -161,6 +161,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("suaras", null, {});
+    await queryInterface.bulkDelete("Suaras", null, {});
   },
 };
