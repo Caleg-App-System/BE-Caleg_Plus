@@ -11,6 +11,7 @@ const {
 } = require("../../models");
 
 const sequelize = require("sequelize");
+const { Op } = require("sequelize");
 
 module.exports = {
   getAll: async (req, res) => {

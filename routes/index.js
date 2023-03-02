@@ -44,7 +44,8 @@ async function routes(fastify, options) {
 
   // Provinsi
   fastify.post("/provinsi/create", cprov.create.create);
-  fastify.get("/provinsi/getall", cprov.getAll.getAll);
+  fastify.get("/provinsi/getall/json", cprov.getAll.getAll);
+  fastify.get("/provinsi/getall", cprov.getAll.getAllByTables);
 
   // DPP
   fastify.post("/dpp/create", cdpp.create.create);
