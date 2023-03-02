@@ -19,7 +19,7 @@ const resetAccount = (link) => {
 
   <hr>
   
-  <p>Copyright &copy; ${new Date().getFullYear()} Si Terbang`;
+  <p>Copyright &copy; ${new Date().getFullYear()} CalegPlus`;
 
   return header + content + footer;
 };
