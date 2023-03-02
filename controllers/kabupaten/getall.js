@@ -30,6 +30,12 @@ module.exports = {
           data: null,
         });
       }
+
+      return reply.code(200).send({
+        status: true,
+        message: "get data successful",
+        data: kabupaten,
+      });
     } catch (err) {
       console.log(err);
     }
