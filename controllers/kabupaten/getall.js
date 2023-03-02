@@ -20,4 +20,18 @@ module.exports = {
       console.log(err);
     }
   },
+  getAllByTables: async (request, reply) => {
+    try {
+      const kabupaten = await Kabupaten.findAll();
+      if (!kabupaten) {
+        return reply.code(404).send({
+          status: false,
+          message: "data not found",
+          data: null,
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
