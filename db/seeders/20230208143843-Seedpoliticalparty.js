@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "politicalparties",
+      "PoliticalParties",
       [
         {
           name: "Demokrat",
@@ -56,6 +56,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("politicalparties", null, {});
+    await queryInterface.bulkDelete("PoliticalParties", null, {});
   },
 };

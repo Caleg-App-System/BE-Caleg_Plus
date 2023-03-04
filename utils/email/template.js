@@ -5,9 +5,9 @@ const header = `
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="SiTerbang">
-  <meta name="keywords" content="SiTerbang, Javascript, NodeJS, ExpressJS">
-  <meta name="author" content="Deny Septian, Febi Ago, Izaz Rizqullah">
+  <meta name="description" content="CalegPlus">
+  <meta name="keywords" content="CalegPLus, Javascript, NodeJS, ExpressJS">
+  <meta name="author" content="Izaz Rizqullah">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>

@@ -33,18 +33,22 @@ async function routes(fastify, options) {
   // Desa
   // fastify.post("/desa/create", cdesa.create.create);
   fastify.get("/desa/get/:districtId", cdesa.getall.getById);
+  fastify.get("/desa/getall", cdesa.getall.getByTables);
 
   // Kecamatan
   // fastify.post("/kecamatan/create", ckec.create.create);
   fastify.get("/kecamatan/get/:regencyId", ckec.getall.getById);
+  fastify.get("/kecamatan/getall", ckec.getall.getAllByTables);
 
   // Kabupaten
   fastify.post("/kabupaten/create", ckab.create.create);
   fastify.get("/kabupaten/get/:provinceId", ckab.getAll.getAll);
+  fastify.get("/kabupaten/getall", ckab.getAll.getAllByTables);
 
   // Provinsi
   fastify.post("/provinsi/create", cprov.create.create);
-  fastify.get("/provinsi/getall", cprov.getAll.getAll);
+  fastify.get("/provinsi/getall/json", cprov.getAll.getAll);
+  fastify.get("/provinsi/getall", cprov.getAll.getAllByTables);
 
   // DPP
   fastify.post("/dpp/create", cdpp.create.create);

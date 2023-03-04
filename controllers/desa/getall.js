@@ -1,3 +1,4 @@
+const { Desa } = require("../../models");
 const adapter = require("../../helpers/adapter");
 
 const api = adapter(
@@ -14,5 +15,26 @@ module.exports = {
       message: "get data successful",
       data: data,
     });
+  },
+  getByTables: async (request, reply) => {
+    try {
+      const desa = await Desa.findAll();
+
+      if (!desa) {
+        return reply.code(404).send({
+          status: false,
+          message: "data not found",
+          data: null,
+        });
+      }
+
+      return reply.code(200).send({
+        status: true,
+        message: "get data successful",
+        data: desa,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   },
 };

@@ -18,4 +18,25 @@ module.exports = {
       console.log(err);
     }
   },
+  getAllByTables: async (request, reply) => {
+    try {
+      const province = await Provinsi.findAll();
+
+      if (!province) {
+        return reply.code(404).send({
+          status: false,
+          message: "data not found",
+          data: null,
+        });
+      }
+
+      return reply.code(200).send({
+        status: true,
+        message: "get data successful",
+        data: province,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };

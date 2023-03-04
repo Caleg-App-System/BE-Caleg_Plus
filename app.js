@@ -34,12 +34,12 @@ fastify.get("/", (req, res) => {
   return res.send("Welcome To Our API");
 });
 
-fastify.listen({ port: PORT }, (err, address) => {
+fastify.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
   }
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${address}`);
 });
 
 // testing

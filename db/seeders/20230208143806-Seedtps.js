@@ -12,46 +12,46 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "tps",
+      "Tps",
       [
         {
-          name: "TPS 1",
+          name: "Tps 1",
           desa_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 11",
+          name: "Tps 11",
           desa_id: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 21",
+          name: "Tps 21",
           desa_id: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 31",
+          name: "Tps 31",
           desa_id: 4,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 41",
+          name: "Tps 41",
           desa_id: 5,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 51",
+          name: "Tps 51",
           desa_id: 6,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          name: "TPS 61",
+          name: "Tps 61",
           desa_id: 7,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -68,6 +68,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("tps", null, {});
+    await queryInterface.bulkDelete("Tps", null, {});
   },
 };

@@ -13,7 +13,7 @@ module.exports = {
       const sheetName = workBook.SheetNames[0];
       const workSheet = workBook.Sheets[sheetName];
 
-      const startCell = "A88";
+      const startCell = "C88";
       const endCell = "C412";
       const range = xlsx.utils.decode_range(`${startCell}:${endCell}`);
 
@@ -27,6 +27,7 @@ module.exports = {
         let numberNoUrut = ''
         let namaAddress = ''
         for (let col = range.s.c; col <= range.e.c; col++) {
+
           if (col == colNumber) {
             numberAddress = xlsx.utils.encode_cell({ r: row, c: col });
           }
@@ -74,6 +75,21 @@ module.exports = {
         // }
         if (nama == '' || nama == null) {
           continue
+
+          const cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
+          let cellValue = workSheet[cellAddress]
+            ? workSheet[cellAddress].v
+            : "";
+
+          // if (cellValue == "A.1") {
+          //   cellValue =
+          //     workSheet[cellAddress] + 2 ? workSheet[cellAddress].v : "";
+          // } else {
+          //   continue;
+          // }
+
+          rowData.push(cellValue);
+
         }
         data.push(rowData);
       }

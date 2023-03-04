@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
      */
     await queryInterface.bulkInsert(
-      "kecamatans",
+      "Kecamatans",
       [
         {
           name: "Banyumas",
@@ -62,6 +62,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete("kecamatans", null, {});
+    await queryInterface.bulkDelete("Kecamatans", null, {});
   },
 };
