@@ -29,6 +29,9 @@ module.exports = {
       photo: {
         type: Sequelize.STRING,
       },
+      photo_ktp: {
+        type: Sequelize.BLOB,
+      },
       role: {
         type: Sequelize.STRING,
       },
@@ -37,6 +40,9 @@ module.exports = {
       },
       email_token: {
         type: Sequelize.STRING,
+      },
+      is_archived: {
+        type: Sequelize.BOOLEAN,
       },
       is_verified_account: {
         type: Sequelize.BOOLEAN,

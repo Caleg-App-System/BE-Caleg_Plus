@@ -90,10 +90,10 @@ async function routes(fastify, options) {
   });
 
   // Test Upload Multer
-  // fastify.post("/uploadFile", {
-  //   preHandler: upload.single("file"),
-  //   handler: cupload.create.upload,
-  // });
+  fastify.post("/uploadfile", {
+    preHandler: upload.single("file"),
+    handler: cupload.create.create,
+  });
 }
 
 module.exports = routes;
