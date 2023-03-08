@@ -18,13 +18,16 @@ module.exports = {
       const range = xlsx.utils.decode_range(`${startCell}:${endCell}`);
 
       const data = [];
-      const colNumber = 0;
-      const colNoUrut = 1;
-      const colNama = 2;
+
+      
+      const colNumber = 0
+      const colNoUrut = 1
+      const colNama = 2
       for (let row = range.s.r; row <= range.e.r; row++) {
-        let numberAddress = "";
-        let numberNoUrut = "";
-        let namaAddress = "";
+
+        let numberAddress = ''
+        let numberNoUrut = ''
+        let namaAddress = ''
         for (let col = range.s.c; col <= range.e.c; col++) {
           if (col == colNumber) {
             numberAddress = xlsx.utils.encode_cell({ r: row, c: col });
@@ -36,13 +39,49 @@ module.exports = {
             namaAddress = xlsx.utils.encode_cell({ r: row, c: col });
           }
         }
-        console.log("number ", numberAddress);
-        console.log("nomorUrut ", numberNoUrut);
-        console.log("nama ", namaAddress);
 
-        let numberUrut = workSheet[numberNoUrut]
-          ? workSheet[numberNoUrut].v
-          : "";
+        console.log("number ", numberAddress)
+        console.log("nomorUrut ", numberNoUrut)
+        console.log("nama ", namaAddress)
+
+        let numberUrut = workSheet[numberNoUrut] ? workSheet[numberNoUrut].v : ""
+
+        console.log("numberUrut ", numberUrut)
+
+        if (numberUrut == '' || numberUrut == null) {
+          continue
+        }
+
+        const rowData = {};
+        let number = workSheet[numberAddress] ? workSheet[numberAddress].v : ""
+
+        if (number.includes("A.1")) {
+          rowData["data"] = "partai"
+        } else {
+          rowData["data"] = "caleg"
+        }
+
+        let nama = workSheet[namaAddress] ? workSheet[namaAddress].v : ""
+        rowData["nama"] = nama
+        // for (let col = range.s.c; col <= range.e.c; col++) {
+        //   const cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
+        //   let cellValue = workSheet[cellAddress]
+        //     ? workSheet[cellAddress].v
+        //     : "";
+
+        //   if (cellValue == cellValue.includes("Partai ")) {
+        //     cellValue =
+        //       workSheet[cellAddress] + 2 ? workSheet[cellAddress].v : "";
+        //   }
+        //   rowData.push(cellValue);
+        // }
+        if (nama == '' || nama == null) {
+          continue
+
+          const cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
+          let cellValue = workSheet[cellAddress]
+            ? workSheet[cellAddress].v
+            : "";
 
         console.log("numberUrut ", numberUrut);
 
@@ -64,6 +103,10 @@ module.exports = {
 
         if (nama == "" || nama == null) {
           continue;
+
+          rowData.push(cellValue);
+
+
         }
         data.push(rowData);
       }
