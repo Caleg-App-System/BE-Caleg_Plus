@@ -5,7 +5,7 @@ module.exports = {
   updateArchivedTrue: async (req, res) => {
     const { username } = req.params;
 
-    const find = await User.findOne({ where: id });
+    const find = await User.findOne({ where: username });
 
     if (!find) {
       return res.code(404).send({
@@ -31,7 +31,7 @@ module.exports = {
   updateArchivedFalse: async (req, res) => {
     const { username } = req.params;
 
-    const find = await User.findOne({ where: id });
+    const find = await User.findOne({ where: username });
 
     if (!find) {
       return res.code(404).send({
