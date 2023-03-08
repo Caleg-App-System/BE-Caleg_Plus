@@ -38,6 +38,9 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
+      working_area: {
+        type: Sequelize.STRING,
+      },
       email_token: {
         type: Sequelize.STRING,
       },

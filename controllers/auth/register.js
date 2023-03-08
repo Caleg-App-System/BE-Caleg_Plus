@@ -55,6 +55,7 @@ module.exports = {
         photo,
         role,
         email_token: token,
+        is_archived: VERIFIED.FALSE,
         is_verified_account: VERIFIED.FALSE,
         is_verified_role: VERIFIED.FALSE,
       });

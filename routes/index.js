@@ -9,6 +9,7 @@ const ccaleg = require("../controllers/caleg/index.js");
 const cpolitic = require("../controllers/politicalParty/index.js");
 const csuara = require("../controllers/suara/index.js");
 const cupload = require("../controllers/upload/index.js");
+const cuser = require("../controllers/user/index.js");
 
 const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
@@ -26,6 +27,16 @@ async function routes(fastify, options) {
     handler: cauth.update.activateRole,
   });
   fastify.put("/verify", cauth.activate.verify);
+
+  // User
+  fastify.put(
+    "/update/archivet/:username",
+    cuser.updateArchived.updateArchivedTrue
+  );
+  fastify.put(
+    "/update/archivef/:username",
+    cuser.updateArchived.updateArchivedFalse
+  );
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);
