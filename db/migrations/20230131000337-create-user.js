@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       photo: {
-        type: Sequelize.STRING,
+        type: Sequelize.BLOB,
       },
       photo_ktp: {
         type: Sequelize.BLOB,

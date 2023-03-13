@@ -120,7 +120,7 @@
 //     console.log(filter);
 //   });
 
-const { PoliticalParty, Suara,  } = require("../../models");
+const { PoliticalParty, Suara } = require("../../models");
 const xlsx = require("xlsx");
 
 module.exports = {
@@ -163,10 +163,6 @@ module.exports = {
           let cellValue = workSheet[cellAddress]
             ? workSheet[cellAddress].v
             : "";
-
-          if (cellValue == "" || cellValue == null) {
-            continue;
-          }
 
           // Tambahkan data ke dalam rowData
           rowData[`nama${i + 1}`] = cellValue;

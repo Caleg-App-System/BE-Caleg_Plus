@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       political_party_id: DataTypes.INTEGER,
       tps_id: DataTypes.INTEGER,
       year_id: DataTypes.INTEGER,
+      count: DataTypes.INTEGER,
     },
     {
       sequelize,

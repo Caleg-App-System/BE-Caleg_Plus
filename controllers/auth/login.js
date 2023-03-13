@@ -28,6 +28,12 @@ module.exports = {
         });
       }
 
+      if (user.is_archived === VERIFIED.FALSE) {
+        return res.code(401).send({
+          message: "user is not verified",
+        });
+      }
+
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
         return res.code(401).send({
@@ -41,7 +47,7 @@ module.exports = {
         role: user.role,
       };
 
-      const token = jwt.sign(payload, JWT_SECRET_KEY);
+      const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "24h" });
 
       return res.code(200).send({
         status: true,

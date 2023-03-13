@@ -21,10 +21,16 @@ module.exports = {
         email_token,
       } = req.body;
 
-      const user = await User.findOne({ where: { email, username } });
+      const userUsername = await User.findOne({
+        where: { username },
+      });
+      const userEmail = await User.findOne({
+        where: { email },
+      });
 
-      if (user) {
+      if (userUsername || userEmail) {
         return res.code(409).send({
+          status: false,
           message: "Email or username already exists",
         });
       }

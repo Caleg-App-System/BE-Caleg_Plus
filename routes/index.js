@@ -37,6 +37,14 @@ async function routes(fastify, options) {
     "/update/archivef/:username",
     cuser.updateArchived.updateArchivedFalse
   );
+  fastify.put("/update/avatar", {
+    preHandler: mid.mustLogin,
+    handler: cuser.updatePhoto.updatePhoto,
+  });
+  fastify.put("/update/ktp", {
+    preHandler: mid.mustLogin,
+    handler: cuser.updatePhotoKtp.updatePhotoKTP,
+  });
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);

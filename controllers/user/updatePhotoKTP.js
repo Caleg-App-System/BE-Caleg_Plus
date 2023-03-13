@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = process.env;
 
 module.exports = {
-  updatePhoto: async (req, res) => {
+  updatePhotoKTP: async (req, res) => {
     try {
       const token = req.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
@@ -19,7 +19,7 @@ module.exports = {
 
       const updated = await User.update(
         {
-          photo: file,
+          photo_ktp: file,
         },
         { where: { id: user.id } }
       );
