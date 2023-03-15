@@ -12,32 +12,32 @@ module.exports = {
       const user = await User.findOne({ where: { username } });
       if (!user) {
         return res.code(404).send({
-          message: "user not found",
+          message: "user tidak di temukan",
         });
       }
 
       if (user.is_verified_role === VERIFIED.FALSE) {
         return res.code(401).send({
-          message: "user is not verified",
+          message: `user belum terverifikasi, silakan hubungi admin untuk aktivasi akun ${user.username} `,
         });
       }
 
       if (user.is_verified_account === VERIFIED.FALSE) {
         return res.code(401).send({
-          message: "user is not verified",
+          message: `user belum terverifikasi, silakan aktivasi akun anda yang telah dikirim ke email ${user.email} `,
         });
       }
 
-      if (user.is_archived === VERIFIED.FALSE) {
+      if (user.is_archived === VERIFIED.TRUE) {
         return res.code(401).send({
-          message: "user is not verified",
+          message: "user di arsipkan, silakan kontak admin untuk lebih lanjut",
         });
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
         return res.code(401).send({
-          message: "password is invalid",
+          message: "password tidak sesuai",
         });
       }
 
