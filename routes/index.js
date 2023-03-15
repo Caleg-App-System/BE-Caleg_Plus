@@ -45,6 +45,10 @@ async function routes(fastify, options) {
     preHandler: mid.mustLogin,
     handler: cuser.updatePhotoKtp.updatePhotoKTP,
   });
+  fastify.put("/update/profile", {
+    preHandler: mid.mustLogin,
+    handler: cuser.updateBio.updateBio,
+  });
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);

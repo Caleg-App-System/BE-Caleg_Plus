@@ -27,10 +27,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       photo: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       photo_ktp: {
-        type: Sequelize.BLOB,
+        type: Sequelize.STRING,
       },
       role: {
         type: Sequelize.STRING,
