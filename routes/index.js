@@ -49,6 +49,7 @@ async function routes(fastify, options) {
     preHandler: mid.mustLogin,
     handler: cuser.updateBio.updateBio,
   });
+  fastify.put("/update/working-area/:id", cuser.updateBio.updateWorkingArea);
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);

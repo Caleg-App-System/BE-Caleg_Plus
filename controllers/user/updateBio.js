@@ -8,14 +8,13 @@ module.exports = {
       const token = req.headers["authorization"].split("Bearer ")[1];
       const user = jwt.sign(token, JWT_SECRET_KEY);
 
-      const { name, phone, address, working_area } = req.body;
+      const { name, phone, address } = req.body;
 
       const updated = await User.update(
         {
           name,
           phone,
           address,
-          working_area,
         },
         { where: { id: user.id } }
       );
@@ -28,5 +27,27 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  updateWorkingArea: async (req, res) => {
+    const { id } = req.params;
+    const { working_area } = req.body;
+
+    const user = await User.findOne({ where: { id } });
+
+    if (!user) {
+      return res.code(404).send({
+        status: false,
+        message: "data tidak ditemukan",
+        data: null,
+      });
+    }
+
+    const updated = await User.update({ working_area }, { where: { id } });
+
+    return res.code(200).send({
+      status: true,
+      message: "berhasil menambahkan area kerja",
+      data: updated,
+    });
   },
 };
