@@ -41,3 +41,5 @@ fastify.listen({ port: PORT, host: "0.0.0.0" }, (err, address) => {
   }
   console.log(`Server running on port ${address}`);
 });
+
+//test
