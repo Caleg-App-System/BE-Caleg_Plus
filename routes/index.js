@@ -15,6 +15,7 @@ const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
 const upload = require("../middlewares/upload.js");
+const uploadImage = require("../utils/media-handling/storage");
 
 async function routes(fastify, options) {
   // Auth

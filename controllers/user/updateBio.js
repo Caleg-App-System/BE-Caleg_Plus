@@ -6,7 +6,7 @@ module.exports = {
   updateBio: async (req, res) => {
     try {
       const token = req.headers["authorization"].split("Bearer ")[1];
-      const user = jwt.sign(token, JWT_SECRET_KEY);
+      const user = jwt.verify(token, JWT_SECRET_KEY);
 
       const { name, phone, address } = req.body;
 
