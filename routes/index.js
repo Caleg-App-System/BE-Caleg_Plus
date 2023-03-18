@@ -10,12 +10,13 @@ const cpolitic = require("../controllers/politicalParty/index.js");
 const csuara = require("../controllers/suara/index.js");
 const cupload = require("../controllers/upload/index.js");
 const cuser = require("../controllers/user/index.js");
+const multer = require("fastify-multer");
 
 const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
 const upload = require("../middlewares/upload.js");
-const uploadImage = require("../utils/media-handling/storage");
+const uploadImage = multer();
 
 async function routes(fastify, options) {
   // Auth
@@ -39,7 +40,7 @@ async function routes(fastify, options) {
     cuser.updateArchived.updateArchivedFalse
   );
   fastify.put("/update/avatar", {
-    preHandler: mid.mustLogin,
+    preHandler: [mid.mustLogin, uploadImage.single("img")],
     handler: cuser.updatePhoto.updatePhoto,
   });
   fastify.put("/update/ktp", {

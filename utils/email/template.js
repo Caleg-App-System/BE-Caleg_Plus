@@ -37,7 +37,7 @@ const header = `
     }
 
     .auth-button {
-      background-color: #6c63ff;
+      background-color: #FF8C00;
       text-decoration: none;
       text-align: center;
       border-radius: 5px;
@@ -52,9 +52,9 @@ const header = `
   <title>Verify Your Account!</title>
 </head>
 
-<body style="background-color: #6c63ff; padding: 20px;">
+<body style="background-color: #FF8C00; padding: 20px;">
   <h1 class="auth-title">
-    Si Terbang
+    Caleg Plus
   </h1>
 
   <div class="auth-content" style="background-color: white;">

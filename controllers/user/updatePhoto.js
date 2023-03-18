@@ -8,7 +8,8 @@ module.exports = {
     try {
       const token = req.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
-      const file = req.file.buffer;
+      const file = req.file;
+      console.log("ini adalah file", file);
       const fileName = req.file.originalname;
 
       if (!file) {
@@ -28,9 +29,9 @@ module.exports = {
         });
       }
 
-      const uploadPhoto = await imagekit.imagekit.upload({
-        file: file,
-        fileName,
+      const uploadPhoto = await imagekit.upload({
+        file: file.buffer,
+        fileName: req.file.originalname,
       });
 
       const updated = await User.update(

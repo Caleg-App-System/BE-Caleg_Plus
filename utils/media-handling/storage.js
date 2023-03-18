@@ -1,5 +1,5 @@
 const multer = require("fastify-multer");
-
+const upload = multer();
 const imagekit = require("./image-kit");
 
 module.exports = {
