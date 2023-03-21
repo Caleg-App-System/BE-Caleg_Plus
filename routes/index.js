@@ -16,7 +16,7 @@ const mid = require("../middlewares/restrict.js");
 const dataExample = require("../utils/data/data-example.json");
 
 const upload = require("../middlewares/upload.js");
-const uploadImage = multer();
+const uploadImage = multer({ storage: upload.storage });
 
 async function routes(fastify, options) {
   // Auth
@@ -40,7 +40,7 @@ async function routes(fastify, options) {
     cuser.updateArchived.updateArchivedFalse
   );
   fastify.put("/update/avatar", {
-    preHandler: [mid.mustLogin, uploadImage.single("img")],
+    preHandler: mid.mustLogin,
     handler: cuser.updatePhoto.updatePhoto,
   });
   fastify.put("/update/ktp", {

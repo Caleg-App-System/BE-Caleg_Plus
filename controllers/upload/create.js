@@ -134,6 +134,7 @@ module.exports = {
       }
 
       const file = req.file;
+      console.log(file);
       const { startCell, endCell } = req.body;
 
       // Read file using xlsx

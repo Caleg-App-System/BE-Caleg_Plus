@@ -6,6 +6,7 @@ const multer = require("fastify-multer");
 // const upload = multer({ dest: "uploads/" });
 const { PORT } = process.env;
 
+// fastify.register(multer.contentParser);
 fastify.register(require("@fastify/multipart"));
 fastify.register(require("@fastify/express"));
 
