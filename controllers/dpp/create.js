@@ -13,11 +13,11 @@ module.exports = {
       }
 
       const file = req.file;
-      const { startCell, endCell, tps_id } = req.body;
+      const { startCell, endCell, tps_id, noSheet } = req.body;
 
       // Read file using xlsx
       const workBook = xlsx.readFile(file.path);
-      const sheetName = workBook.SheetNames[0];
+      const sheetName = workBook.SheetNames[noSheet];
       const workSheet = workBook.Sheets[sheetName];
 
       // Decode range

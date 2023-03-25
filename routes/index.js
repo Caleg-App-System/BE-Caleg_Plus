@@ -55,6 +55,7 @@ async function routes(fastify, options) {
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);
+  fastify.get("/tps/getall", ctps.getAll.getAll);
 
   // Desa
   // fastify.post("/desa/create", cdesa.create.create);
