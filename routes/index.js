@@ -77,7 +77,11 @@ async function routes(fastify, options) {
   fastify.get("/provinsi/getall", cprov.getAll.getAllByTables);
 
   // DPP
-  fastify.post("/dpp/create", cdpp.create.create);
+  fastify.post(
+    "/dpp/create",
+    { preHandler: upload.single("file") },
+    cdpp.create.create
+  );
   fastify.get("/dpp/count", cdpp.count.count);
 
   // Caleg

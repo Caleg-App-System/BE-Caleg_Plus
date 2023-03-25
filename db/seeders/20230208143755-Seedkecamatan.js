@@ -27,7 +27,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Tambak",
+          name: "Kemranjen",
           kabupaten_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -45,7 +45,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Kemranjen",
+          name: "Tambak",
           kabupaten_id: 1,
           createdAt: new Date(),
           updatedAt: new Date(),

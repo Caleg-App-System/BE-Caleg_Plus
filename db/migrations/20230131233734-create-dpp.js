@@ -8,32 +8,53 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      no_KK: {
+        type: Sequelize.STRING,
+      },
+      nik: {
+        type: Sequelize.STRING,
+      },
       name: {
         type: Sequelize.STRING,
       },
-      national_id: {
+      dob_place: {
         type: Sequelize.STRING,
       },
       dob: {
         type: Sequelize.STRING,
       },
+      marital_status: {
+        type: Sequelize.STRING,
+      },
+      gender: {
+        type: Sequelize.STRING,
+      },
       address: {
         type: Sequelize.STRING,
+      },
+      disabilty: {
+        type: Sequelize.STRING,
+      },
+      keterangan: {
+        type: Sequelize.STRING,
+      },
+      photo_KK: {
+        type: Sequelize.BLOB,
+      },
+      photo_KTP: {
+        type: Sequelize.BLOB,
       },
       tps_id: {
         type: Sequelize.INTEGER,
       },
-      caleg_id: {
-        type: Sequelize.INTEGER,
+      is_check: {
+        type: Sequelize.BOOLEAN,
       },
-      religion: {
-        type: Sequelize.STRING,
+      is_under_age: {
+        type: Sequelize.BOOLEAN,
       },
-      job: {
-        type: Sequelize.STRING,
-      },
-      image_national_card: {
-        type: Sequelize.STRING,
+      is_new: {
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,

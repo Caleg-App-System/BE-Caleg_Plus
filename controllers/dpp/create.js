@@ -1,43 +1,78 @@
-const { Dpp } = require("../../models");
+const { Dpp, Kecamatan, Desa, Tps } = require("../../models");
+const xlsx = require("xlsx");
 
 module.exports = {
   create: async (req, res) => {
     try {
-      const {
-        name,
-        national_id,
-        dob,
-        tps_id,
-        address,
-        religion,
-        job,
-        image_national_card,
-      } = req.body;
-
-      const user = await Dpp.findOne({ where: { name } });
-
-      if (user) {
-        return res.code(409).send({
+      if (!req.file) {
+        return res.code(404).send({
           status: false,
-          message: "national id already exist!",
+          message: "file tidak di temukan",
           data: null,
         });
       }
 
-      if (user.national_id.length < 16) {
-        return res.code(409).send({
-          status: false,
-          message: "national id must be 16 digit!",
-          data: null,
-        });
+      const file = req.file;
+      const { startCell, endCell, tps_id } = req.body;
+
+      // Read file using xlsx
+      const workBook = xlsx.readFile(file.path);
+      const sheetName = workBook.SheetNames[0];
+      const workSheet = workBook.Sheets[sheetName];
+
+      // Decode range
+      const range = xlsx.utils.decode_range(`${startCell}:${endCell}`);
+
+      const data = [];
+
+      const keymap = {
+        2: "no_KK",
+        3: "nik",
+        4: "name",
+        5: "dob_place",
+        6: "dob",
+        7: "marital_status",
+        8: "gender",
+        9: "address",
+        10: "rt",
+        11: "rw",
+        12: "disabilty",
+        13: "keterangan",
+        14: "tps_id",
+      };
+
+      let alamat = "";
+
+      // Loop through each row within the range
+      for (let row = range.s.r; row <= range.e.r; row++) {
+        let rowData = {};
+
+        // Loop through each column within the range
+        for (let col = range.s.c; col <= range.e.c; col++) {
+          let cellAddress = xlsx.utils.encode_cell({ r: row, c: col });
+          let cellValue = workSheet[cellAddress]
+            ? workSheet[cellAddress].v
+            : "";
+
+          if (col >= 8 && col <= 10) {
+            rowData["address"] = `${rowData["address"] || ""} ${cellValue}`;
+          } else {
+            rowData[keymap[col + 1]] = cellValue;
+          }
+        }
+        rowData[keymap[14]] = tps_id;
+
+        // Add row data to data array
+        data.push(rowData);
       }
 
-      const created = await Dpp.bulkcreate(req.body);
+      // Insert data to database
+      // const created = await Dpp.bulkCreate(data);
 
-      return res.code(201).send({
+      return res.code(200).send({
         status: true,
-        message: "create dpp succesfully",
-        data: created,
+        message: "data berhasil diinputkan",
+        data: data,
       });
     } catch (err) {
       console.log(err);

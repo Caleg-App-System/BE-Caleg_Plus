@@ -8,11 +8,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Dpp.hasMany(models.Suara, {
-        foreignKey: "dpp_id",
-        as: "suara",
-      });
-
       Dpp.belongsTo(models.Tps, {
         foreignKey: "tps_id",
         as: "tps",
@@ -26,15 +21,22 @@ module.exports = (sequelize, DataTypes) => {
   }
   Dpp.init(
     {
+      no_KK: DataTypes.STRING,
+      nik: DataTypes.STRING,
       name: DataTypes.STRING,
-      national_id: DataTypes.STRING,
+      dob_place: DataTypes.STRING,
       dob: DataTypes.STRING,
-      tps_id: DataTypes.INTEGER,
-      caleg_id: DataTypes.INTEGER,
+      marital_status: DataTypes.STRING,
+      gender: DataTypes.STRING,
       address: DataTypes.STRING,
-      religion: DataTypes.STRING,
-      job: DataTypes.STRING,
-      image_national_card: DataTypes.STRING,
+      disablity: DataTypes.STRING,
+      keterangan: DataTypes.STRING,
+      photo_KK: DataTypes.BLOB,
+      photo_KTP: DataTypes.BLOB,
+      tps_id: DataTypes.INTEGER,
+      is_check: DataTypes.BOOLEAN,
+      is_under_age: DataTypes.BOOLEAN,
+      is_new: DataTypes.BOOLEAN,
     },
     {
       sequelize,
