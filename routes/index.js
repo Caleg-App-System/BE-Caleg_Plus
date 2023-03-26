@@ -21,7 +21,16 @@ const uploadImage = multer({ storage: upload.storage });
 async function routes(fastify, options) {
   // Auth
   fastify.post("/auth/login", cauth.login.login);
-  fastify.post("/auth/register", cauth.register.register);
+  fastify.post(
+    "/auth/register",
+    {
+      preHandler: upload.fields([
+        { name: "photo", maxCount: 1 },
+        { name: "photo_ktp", maxCount: 1 },
+      ]),
+    },
+    cauth.register.register
+  );
   fastify.get("/auth/getall", cauth.getAll.getAll);
   fastify.get("/auth/getbyid/:id", cauth.getbyid.getById);
   fastify.put("/auth/activate/role/:id", {

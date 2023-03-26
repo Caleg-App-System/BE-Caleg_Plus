@@ -16,10 +16,11 @@ module.exports = {
         name,
         phone,
         address,
-        photo,
+        working_area,
         role,
         email_token,
       } = req.body;
+      const { photo, photo_ktp } = req.file;
 
       const userUsername = await User.findOne({
         where: { username },
@@ -59,7 +60,9 @@ module.exports = {
         phone,
         address,
         photo,
+        photo_ktp,
         role,
+        working_area,
         email_token: token,
         is_archived: VERIFIED.FALSE,
         is_verified_account: VERIFIED.FALSE,
@@ -87,6 +90,3 @@ module.exports = {
     }
   },
 };
-
-// address : provinsi, kabupaten, kecamatan, desa
-// address : kedunggede banyumas banyumas jawa tengah
