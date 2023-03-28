@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       marital_status: DataTypes.STRING,
       gender: DataTypes.STRING,
       address: DataTypes.STRING,
-      disablity: DataTypes.STRING,
+      disability: DataTypes.STRING,
       keterangan: DataTypes.STRING,
       photo_KK: DataTypes.BLOB,
       photo_KTP: DataTypes.BLOB,

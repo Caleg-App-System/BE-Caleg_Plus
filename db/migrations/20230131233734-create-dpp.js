@@ -32,7 +32,7 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
-      disabilty: {
+      disability: {
         type: Sequelize.STRING,
       },
       keterangan: {

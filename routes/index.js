@@ -92,7 +92,7 @@ async function routes(fastify, options) {
     { preHandler: upload.single("file") },
     cdpp.create.create
   );
-  fastify.get("/dpp/count", cdpp.count.count);
+  fastify.get("/dpp/getall", cdpp.getAll.getAll);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);

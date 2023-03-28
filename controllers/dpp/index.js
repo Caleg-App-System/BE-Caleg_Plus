@@ -1,7 +1,7 @@
-const count = require("./count.js");
 const create = require("./create");
+const getAll = require("./getAll");
 
 module.exports = {
-  count,
   create,
+  getAll,
 };

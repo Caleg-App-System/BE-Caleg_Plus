@@ -36,7 +36,7 @@ module.exports = {
         9: "address",
         10: "rt",
         11: "rw",
-        12: "disabilty",
+        12: "disability",
         13: "keterangan",
         14: "tps_id",
       };
@@ -67,12 +67,12 @@ module.exports = {
       }
 
       // Insert data to database
-      // const created = await Dpp.bulkCreate(data);
+      const created = await Dpp.bulkCreate(data);
 
       return res.code(200).send({
         status: true,
         message: "data berhasil diinputkan",
-        data: data,
+        data: created,
       });
     } catch (err) {
       console.log(err);
