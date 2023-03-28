@@ -12,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "tps_id",
         as: "tps",
       });
-
-      Dpp.belongsTo(models.Caleg, {
-        foreignKey: "caleg_id",
-        as: "caleg",
-      });
     }
   }
   Dpp.init(
