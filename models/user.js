@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      User.belongsTo(models.Dpp, {
+      User.hasOne(models.Dpp, {
         foreignKey: "user_id",
         as: "user",
       });

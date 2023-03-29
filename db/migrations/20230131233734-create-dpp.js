@@ -56,6 +56,12 @@ module.exports = {
       is_new: {
         type: Sequelize.BOOLEAN,
       },
+      is_acc: {
+        type: Sequelize.BOOLEAN,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
