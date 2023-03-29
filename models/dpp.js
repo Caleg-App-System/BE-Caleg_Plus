@@ -12,6 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "tps_id",
         as: "tps",
       });
+
+      Dpp.hasOne(models.User, {
+        foreignKey: "user_id",
+        as: "user",
+      });
     }
   }
   Dpp.init(
@@ -32,6 +37,8 @@ module.exports = (sequelize, DataTypes) => {
       is_check: DataTypes.BOOLEAN,
       is_under_age: DataTypes.BOOLEAN,
       is_new: DataTypes.BOOLEAN,
+      // is_acc: DataTypes.BOOLEAN,
+      // user_id: DataTypes.INTEGER,
     },
     {
       sequelize,

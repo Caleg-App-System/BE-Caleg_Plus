@@ -1,9 +1,11 @@
 const { Dpp, Tps, Desa } = require("../../models");
 
 module.exports = {
-  getAll: async (request, reply) => {
+  getById: async (request, reply) => {
     try {
-      const find = await Dpp.findAll({
+      const { id } = request.params;
+
+      const dpp = await Dpp.findOne({
         include: [
           {
             model: Tps,
@@ -22,9 +24,10 @@ module.exports = {
             },
           },
         ],
+        where: { id },
       });
 
-      if (!find) {
+      if (!dpp) {
         return reply.code(404).send({
           status: false,
           message: "data not found",
@@ -32,10 +35,10 @@ module.exports = {
         });
       }
 
-      reply.code(200).send({
+      return reply.code(200).send({
         status: true,
-        message: "berhasil mengambil data",
-        data: find,
+        message: "data berhasil di muat",
+        data: dpp,
       });
     } catch (err) {
       console.log(err);
