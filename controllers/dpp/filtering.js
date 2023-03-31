@@ -1,47 +1,49 @@
-const { Dpp } = require("../../models");
+const { Dpp, Tps, Desa } = require("../../models");
 const { Op } = require("sequelize");
 
 module.exports = {
   filter: async (req, res) => {
     try {
-      const { name, tps_id, caleg_id } = req.params;
+      const { name, nik, no_KK } = req.query;
 
-      const dpp = await Dpp.findAll({
+      const dpp = await Dpp.findOne({
         where: {
           [Op.or]: [
+            {
+              no_KK: {
+                [Op.like]: `%${no_KK}%`,
+              },
+            },
+            {
+              nik: {
+                [Op.like]: `%${nik}%`,
+              },
+            },
             {
               name: {
                 [Op.like]: `%${name}%`,
               },
             },
-            {
-              tps_id: {
-                [Op.like]: `%${tps_id}%`,
-              },
-            },
-            {
-              caleg_id: {
-                [Op.like]: `%${caleg_id}%`,
-              },
-            },
-          ],
-          include: [
-            {
-              model: Tps,
-              as: "tps",
-              attributes: {
-                exclude: ["createdAt", "updatedAt"],
-              },
-            },
-            {
-              model: Caleg,
-              as: "caleg",
-              attributes: {
-                exclude: ["createdAt", "updatedAt"],
-              },
-            },
           ],
         },
+        include: [
+          {
+            model: Tps,
+            as: "tps",
+            include: [
+              {
+                model: Desa,
+                as: "desa",
+                attributes: {
+                  exclude: ["createdAt", "updatedAt"],
+                },
+              },
+            ],
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+        ],
       });
 
       return res.code(200).send({

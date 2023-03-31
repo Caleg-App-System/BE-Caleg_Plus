@@ -94,6 +94,7 @@ async function routes(fastify, options) {
   );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
+  fastify.get("/dpp/search", cdpp.filtering.filter);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);
