@@ -70,11 +70,13 @@ async function routes(fastify, options) {
   // fastify.post("/desa/create", cdesa.create.create);
   fastify.get("/desa/get/:districtId", cdesa.getall.getById);
   fastify.get("/desa/getall", cdesa.getall.getByTables);
+  fastify.get("/desa/getById/:id", cdesa.getById.getById);
 
   // Kecamatan
   // fastify.post("/kecamatan/create", ckec.create.create);
   fastify.get("/kecamatan/get/:regencyId", ckec.getall.getById);
   fastify.get("/kecamatan/getall", ckec.getall.getAllByTables);
+  fastify.get("/kecamatan/getById/:id", ckec.getById.getById);
 
   // Kabupaten
   fastify.post("/kabupaten/create", ckab.create.create);
