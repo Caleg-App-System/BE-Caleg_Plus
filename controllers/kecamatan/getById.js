@@ -3,7 +3,7 @@ const { Kecamatan } = require("../../models");
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.body;
+      const { id } = request.params;
 
       const find = await Kecamatan.findOne({ where: { id } });
 

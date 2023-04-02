@@ -3,11 +3,11 @@ const { Desa } = require("../../models");
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.body;
+      const { id } = request.params;
 
       const find = await Desa.findOne({ where: { id } });
 
-      if (!user) {
+      if (!find) {
         return reply.code(404).send({
           status: false,
           message: "data tidak ditemukan",

@@ -1,4 +1,4 @@
-const { Dpp, Tps, Desa } = require("../../models");
+const { Dpp, Tps, Desa, Kecamatan } = require("../../models");
 
 module.exports = {
   getAll: async (request, reply) => {
@@ -12,6 +12,15 @@ module.exports = {
               {
                 model: Desa,
                 as: "desa",
+                include: [
+                  {
+                    model: Kecamatan,
+                    as: "kecamatan",
+                    attributes: {
+                      exclude: ["createdAt", "updatedAt"],
+                    },
+                  },
+                ],
                 attributes: {
                   exclude: ["createdAt", "updatedAt"],
                 },
