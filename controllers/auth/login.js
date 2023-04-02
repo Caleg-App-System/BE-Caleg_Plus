@@ -5,38 +5,38 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = process.env;
 
 module.exports = {
-  login: async (req, res) => {
+  login: async (request, reply) => {
     try {
-      const { username, password } = req.body;
+      const { username, password } = request.body;
 
       const user = await User.findOne({ where: { username } });
       if (!user) {
-        return res.code(404).send({
+        return reply.code(404).send({
           message: "user tidak di temukan",
         });
       }
 
       if (user.is_verified_role === VERIFIED.FALSE) {
-        return res.code(401).send({
+        return reply.code(401).send({
           message: `user belum terverifikasi, silakan hubungi admin untuk aktivasi akun ${user.username} `,
         });
       }
 
       if (user.is_verified_account === VERIFIED.FALSE) {
-        return res.code(401).send({
+        return reply.code(401).send({
           message: `user belum terverifikasi, silakan aktivasi akun anda yang telah dikirim ke email ${user.email} `,
         });
       }
 
       if (user.is_archived === VERIFIED.TRUE) {
-        return res.code(401).send({
+        return reply.code(401).send({
           message: "user di arsipkan, silakan kontak admin untuk lebih lanjut",
         });
       }
 
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        return res.code(401).send({
+        return reply.code(401).send({
           message: "password tidak sesuai",
         });
       }
@@ -49,7 +49,7 @@ module.exports = {
 
       const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "24h" });
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "user logged in successfully",
         data: {

@@ -7,7 +7,7 @@ const activateAccount = require("../../utils/email/activateAccountEmail.js");
 const { sendEmail } = require("../../utils/email/email.js");
 
 module.exports = {
-  register: async (req, res) => {
+  register: async (request, reply) => {
     try {
       const {
         email,
@@ -19,8 +19,8 @@ module.exports = {
         working_area,
         role,
         email_token,
-      } = req.body;
-      const { photo, photo_ktp } = req.file;
+      } = request.body;
+      const { photo, photo_ktp } = request.file;
 
       const userUsername = await User.findOne({
         where: { username },
@@ -30,20 +30,20 @@ module.exports = {
       });
 
       if (userUsername || userEmail) {
-        return res.code(409).send({
+        return reply.code(409).send({
           status: false,
           message: "Email or username already exists",
         });
       }
 
       if (username.length < 6) {
-        return res.code(409).send({
+        return reply.code(409).send({
           message: "Username must be at least 6 characters",
         });
       }
 
       if (password.length < 8) {
-        return res.code(409).send({
+        return reply.code(409).send({
           message: "Password must be at least 8 characters",
         });
       }
@@ -80,7 +80,7 @@ module.exports = {
 
       await sendEmail(templateEmail);
 
-      return res.code(201).send({
+      return reply.code(201).send({
         status: true,
         message: "user created successfully",
         data: newUser,

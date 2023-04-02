@@ -6,15 +6,19 @@ const api = adapter(
 );
 
 module.exports = {
-  getById: async (req, res) => {
-    const { districtId } = req.params;
-    const { data } = await api.get(`/villages/${districtId}.json`);
+  getById: async (request, reply) => {
+    try {
+      const { districtId } = request.params;
+      const { data } = await api.get(`/villages/${districtId}.json`);
 
-    return res.code(200).send({
-      status: true,
-      message: "get data successful",
-      data: data,
-    });
+      return reply.code(200).send({
+        status: true,
+        message: "get data successful",
+        data: data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   },
   getByTables: async (request, reply) => {
     try {

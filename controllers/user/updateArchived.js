@@ -2,7 +2,7 @@ const { User } = require("../../models");
 const { VERIFIED } = require("../../utils/enum.js");
 
 module.exports = {
-  updateArchivedTrue: async (req, res) => {
+  updateArchivedTrue: async (request, reply) => {
     const { username } = req.params;
 
     const find = await User.findOne({ where: { username } });

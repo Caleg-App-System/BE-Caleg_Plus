@@ -14,7 +14,7 @@ const sequelize = require("sequelize");
 const { Op } = require("sequelize");
 
 module.exports = {
-  getAll: async (req, res) => {
+  getAll: async (request, reply) => {
     try {
       const result = await Suara.findAll({
         include: [
@@ -156,7 +156,7 @@ module.exports = {
         // return e;
       });
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "data retrieved",
         data: {

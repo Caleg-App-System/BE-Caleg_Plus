@@ -124,16 +124,16 @@ const { PoliticalParty, Suara } = require("../../models");
 const xlsx = require("xlsx");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
       // Cek apakah ada file yang di-upload
-      if (!req.file) {
-        return res.status(400).send({
+      if (!request.file) {
+        return reply.code(400).send({
           message: "No file uploaded",
         });
       }
 
-      const file = req.file;
+      const file = request.file;
       console.log(file);
       const { startCell, endCell } = req.body;
 
@@ -176,13 +176,13 @@ module.exports = {
       // Simpan data ke dalam database
       // await PoliticalParty.bulkCreate(data);
 
-      return res.status(201).send({
+      return reply.code(201).send({
         message: "Data has been saved",
         data: data,
       });
     } catch (err) {
       console.log(err);
-      return res.status(500).send({
+      return reply.code(500).send({
         message: "Error while processing the request",
       });
     }

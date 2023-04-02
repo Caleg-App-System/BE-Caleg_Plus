@@ -3,10 +3,10 @@ const { Desa, Kecamatan } = require("../../models");
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.params;
+      const { kecamatan_id } = request.params;
 
       const find = await Desa.findOne({
-        where: { id },
+        where: { kecamatan_id },
         include: [
           {
             model: Kecamatan,

@@ -1,19 +1,17 @@
-const { Desa, Kecamatan } = require("../../models");
+const { Kecamatan, Kabupaten } = require("../../models");
 
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.params;
+      const { kabupaten_id } = request.params;
 
-      const find = await Desa.findOne({
-        where: { id },
+      const find = await Kecamatan.findOne({
+        where: { kabupaten_id },
         include: [
           {
-            model: Kecamatan,
-            as: "kecamatan",
-            attributes: {
-              exclude: ["createdAt", "updatedAt"],
-            },
+            model: Kabupaten,
+            as: "kabupaten",
+            attributes: { exclude: ["createdAt", "updatedAt"] },
           },
         ],
       });
@@ -21,14 +19,14 @@ module.exports = {
       if (!find) {
         return reply.code(404).send({
           status: false,
-          message: "data tidak ditemukan",
+          message: "data tidak di temukan",
           data: null,
         });
       }
 
       return reply.code(200).send({
         status: true,
-        messsage: "data berhasil ditemukan",
+        message: "data berhasil di temukan",
         data: find,
       });
     } catch (err) {

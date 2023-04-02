@@ -1,11 +1,31 @@
-const { Tps } = require("../../models/");
+const { Tps, Desa, Kecamatan } = require("../../models/");
 
 module.exports = {
   getById: async (request, reply) => {
     try {
       const { id } = request.params;
 
-      const find = await Tps.findOne({ where: { id } });
+      const find = await Tps.findOne({
+        where: { id },
+        include: [
+          {
+            model: Desa,
+            as: "desa",
+            include: [
+              {
+                model: Kecamatan,
+                as: "kecamatan",
+                attributes: {
+                  exclude: ["createdAt", "updatedAt"],
+                },
+              },
+            ],
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+        ],
+      });
 
       if (!find) {
         return reply.code(404).send({

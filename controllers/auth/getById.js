@@ -1,18 +1,18 @@
 const { User } = require("../../models");
 
 module.exports = {
-  getById: async (req, res) => {
+  getById: async (request, reply) => {
     try {
-      const { id } = req.params;
+      const { id } = request.params;
 
       const user = await User.findOne({ where: { id } });
       if (!user) {
-        return res.code(404).send({
+        return reply.code(404).send({
           message: "user not found",
         });
       }
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "get user successfully",
         data: user,

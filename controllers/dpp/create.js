@@ -2,18 +2,18 @@ const { Dpp, Kecamatan, Desa, Tps } = require("../../models");
 const xlsx = require("xlsx");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
-      if (!req.file) {
-        return res.code(404).send({
+      if (!request.file) {
+        return reply.code(404).send({
           status: false,
           message: "file tidak di temukan",
           data: null,
         });
       }
 
-      const file = req.file;
-      const { startCell, endCell, tps_id, noSheet } = req.body;
+      const file = request.file;
+      const { startCell, endCell, tps_id, noSheet } = request.body;
 
       // Read file using xlsx
       const workBook = xlsx.readFile(file.path);
@@ -69,7 +69,7 @@ module.exports = {
       // Insert data to database
       const created = await Dpp.bulkCreate(data);
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "data berhasil diinputkan",
         data: created,

@@ -4,9 +4,9 @@ const xlsx = require("xlsx");
 const { testing } = require("googleapis/build/src/apis/testing");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
-      const file = req.file;
+      const file = request.file;
 
       // Read file using xlsx
       const workBook = xlsx.readFile(file.path);
@@ -108,7 +108,7 @@ module.exports = {
         data.push(rowData);
       }
 
-      return res.code(201).send({
+      return reply.code(201).send({
         status: true,
         message: "create succesfull",
         data: data,

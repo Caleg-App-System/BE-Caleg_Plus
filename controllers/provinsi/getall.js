@@ -6,7 +6,7 @@ const api = adapter(
 );
 
 module.exports = {
-  getAll: async (req, res) => {
+  getAll: async (request, reply) => {
     try {
       const { data } = await api.get("/provinces.json");
       return res.code(200).send({

@@ -3,7 +3,7 @@ const fs = require("fs");
 const dataProvinsi = require("../../utils/data/province.json");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
       const arr = [];
       const data = dataProvinsi.forEach(async (e) => {
@@ -21,7 +21,7 @@ module.exports = {
         });
       });
 
-      return res.code(201).send({
+      return reply.code(201).send({
         status: true,
         message: "create provinsi successful",
         data: data,

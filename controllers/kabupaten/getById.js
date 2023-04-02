@@ -1,13 +1,24 @@
-const { Kabupaten } = require("../../models");
+const { Kabupaten, Provinsi } = require("../../models");
 
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.body;
+      const { id } = request.params;
 
-      const find = await Kabupaten.findOne({ where: { id } });
+      const find = await Kabupaten.findOne({
+        where: { id },
+        include: [
+          {
+            model: Provinsi,
+            as: "provinsi",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+        ],
+      });
 
-      if (!user) {
+      if (!find) {
         return reply.code(404).send({
           status: false,
           message: "data tidak ditemukan",

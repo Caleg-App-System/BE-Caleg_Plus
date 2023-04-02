@@ -1,13 +1,17 @@
 const { Caleg } = require("../../models");
 
 module.exports = {
-  create: async (req, res) => {
-    const created = await Caleg.bulkCreate(req.body);
+  create: async (request, reply) => {
+    try {
+      const created = await Caleg.bulkCreate(req.body);
 
-    res.code(201).send({
-      status: true,
-      message: "caleg created successfully",
-      data: created,
-    });
+      return reply.code(201).send({
+        status: true,
+        message: "caleg created successfully",
+        data: created,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   },
 };

@@ -1,14 +1,14 @@
 const { Kabupaten } = require("../../models");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
-      const { name, provinsi_id } = req.body;
+      const { name, provinsi_id } = request.body;
 
       const exist = await Kabupaten.findOne({ where: { name } });
 
       if (exist) {
-        return res.code(409).send({
+        return reply.code(409).send({
           status: "error",
           message: "Kabupaten already exist",
         });
@@ -19,7 +19,7 @@ module.exports = {
         provinsi_id,
       });
 
-      res.code(201).send({
+      return reply.code(201).send({
         status: "success",
         message: "Kabupaten created successfully",
         data: created,

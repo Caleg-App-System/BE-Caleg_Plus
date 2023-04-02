@@ -1,16 +1,16 @@
-const { Desa, Kecamatan } = require("../../models");
+const { Kabupaten, Provinsi } = require("../../models");
 
 module.exports = {
   getById: async (request, reply) => {
     try {
-      const { id } = request.params;
+      const { provinsi_id } = request.params;
 
-      const find = await Desa.findOne({
-        where: { id },
+      const find = await Kabupaten.findOne({
+        where: { provinsi_id },
         include: [
           {
-            model: Kecamatan,
-            as: "kecamatan",
+            model: Provinsi,
+            as: "provinsi",
             attributes: {
               exclude: ["createdAt", "updatedAt"],
             },

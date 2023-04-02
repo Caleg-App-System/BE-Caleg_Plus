@@ -66,23 +66,50 @@ async function routes(fastify, options) {
   // fastify.post("/tps/create", ctps.create.create);
   fastify.get("/tps/getall", ctps.getAll.getAll);
   fastify.get("/tps/getById/:id", ctps.getById.getById);
+  fastify.get("/tps/getByDesaId/:desa_id", ctps.getByDesaId.getById);
+  fastify.get("/tps/getAllByDesaId/:desa_id", ctps.getAllByDesaId.getAll);
 
   // Desa
   // fastify.post("/desa/create", cdesa.create.create);
   fastify.get("/desa/get/:districtId", cdesa.getall.getById);
   fastify.get("/desa/getall", cdesa.getall.getByTables);
   fastify.get("/desa/getById/:id", cdesa.getById.getById);
+  fastify.get(
+    "/desa/getByKecamatanId/:kecamatan_id",
+    cdesa.getByKecamatanId.getById
+  );
+  fastify.get(
+    "/desa/getAllByKecamatanId/:kecamatan_id",
+    cdesa.getAllByKecamatanId.getByTables
+  );
 
   // Kecamatan
   // fastify.post("/kecamatan/create", ckec.create.create);
   fastify.get("/kecamatan/get/:regencyId", ckec.getall.getById);
   fastify.get("/kecamatan/getall", ckec.getall.getAllByTables);
   fastify.get("/kecamatan/getById/:id", ckec.getById.getById);
+  fastify.get(
+    "/kecamatan/getByKabupatenId/:kabupaten_id",
+    ckec.getByKabupatenId.getById
+  );
+  fastify.get(
+    "/kecamatan/getAllByKabupatenId/:kabupaten_id",
+    ckec.getAllByKabupatenId.getAllByTables
+  );
 
   // Kabupaten
   fastify.post("/kabupaten/create", ckab.create.create);
   fastify.get("/kabupaten/get/:provinceId", ckab.getAll.getAll);
   fastify.get("/kabupaten/getall", ckab.getAll.getAllByTables);
+  fastify.get("/kabupaten/getById/:id", ckab.getById.getById);
+  fastify.get(
+    "/kabupaten/getByProvinsiId/:provinsi_id",
+    ckab.getByProvinceId.getById
+  );
+  fastify.get(
+    "/kabupaten/getAllByProvinsiId/:provinsi_id",
+    ckab.getAllByProvinceId.getAllByTables
+  );
 
   // Provinsi
   fastify.post("/provinsi/create", cprov.create.create);

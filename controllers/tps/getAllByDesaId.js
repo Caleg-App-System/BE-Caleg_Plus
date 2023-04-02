@@ -1,22 +1,26 @@
-const { User } = require("../../models");
+const { Tps } = require("../../models");
 
 module.exports = {
   getAll: async (request, reply) => {
     try {
-      const users = await User.findAll();
+      const { desa_id } = request.params;
+      const tps = await Tps.findAll({
+        include: ["desa"],
+        where: { desa_id },
+      });
 
-      if (!users) {
+      if (!tps) {
         return reply.code(404).send({
           status: false,
-          message: "no users found",
+          message: "tps tidak ditemukan",
           data: null,
         });
       }
 
       return reply.code(200).send({
         status: true,
-        message: "get users successfull",
-        data: users,
+        message: "berhasil mengambil data",
+        data: tps,
       });
     } catch (err) {
       console.log(err);

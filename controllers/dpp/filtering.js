@@ -2,9 +2,9 @@ const { Dpp, Tps, Desa } = require("../../models");
 const { Op } = require("sequelize");
 
 module.exports = {
-  filter: async (req, res) => {
+  filter: async (request, reply) => {
     try {
-      const { name, nik, no_KK } = req.query;
+      const { name, nik, no_KK } = request.query;
 
       const dpp = await Dpp.findOne({
         where: {
@@ -46,7 +46,7 @@ module.exports = {
         ],
       });
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "success",
         data: dpp,

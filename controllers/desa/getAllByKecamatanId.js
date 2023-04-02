@@ -1,12 +1,11 @@
 const { Desa, Kecamatan } = require("../../models");
 
 module.exports = {
-  getById: async (request, reply) => {
+  getByTables: async (request, reply) => {
     try {
-      const { id } = request.params;
-
-      const find = await Desa.findOne({
-        where: { id },
+      const { kecamatan_id } = request.params;
+      const desa = await Desa.findAll({
+        where: { kecamatan_id },
         include: [
           {
             model: Kecamatan,
@@ -18,18 +17,18 @@ module.exports = {
         ],
       });
 
-      if (!find) {
+      if (!desa) {
         return reply.code(404).send({
           status: false,
-          message: "data tidak ditemukan",
+          message: "data not found",
           data: null,
         });
       }
 
       return reply.code(200).send({
         status: true,
-        messsage: "data berhasil ditemukan",
-        data: find,
+        message: "get data successful",
+        data: desa,
       });
     } catch (err) {
       console.log(err);

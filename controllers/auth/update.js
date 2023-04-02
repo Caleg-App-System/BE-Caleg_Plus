@@ -2,9 +2,9 @@ const { User } = require("../../models");
 const { VERIFIED } = require("../../utils/enum.js");
 
 module.exports = {
-  activateRole: async (req, res) => {
+  activateRole: async (request, reply) => {
     try {
-      const { id } = req.params;
+      const { id } = request.params;
 
       const user = await User.findOne({ where: { id } });
 
@@ -23,7 +23,7 @@ module.exports = {
         }
       );
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "user role updated successfully",
         data: updatedUser,
@@ -32,15 +32,15 @@ module.exports = {
       console.log(err);
     }
   },
-  activateAccount: async (req, res) => {
+  activateAccount: async (request, reply) => {
     try {
-      const { id } = req.params;
-      const { is_verified_account = VERIFIED.TRUE } = req.body;
+      const { id } = request.params;
+      const { is_verified_account = VERIFIED.TRUE } = request.body;
 
       const user = await User.findOne({ where: { id } });
 
       if (!user) {
-        return res.code(404).send({
+        return reply.code(404).send({
           message: "user not found",
         });
       }
@@ -49,7 +49,7 @@ module.exports = {
         is_verified_account,
       });
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "user account updated successfully",
         data: updatedUser,

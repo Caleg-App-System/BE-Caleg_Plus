@@ -6,12 +6,12 @@ const api = adapter(
 );
 
 module.exports = {
-  getAll: async (req, res) => {
+  getAll: async (request, reply) => {
     try {
-      const { provinceId } = req.params;
+      const { provinceId } = request.params;
       const { data } = await api.get(`/regencies/${provinceId}.json`);
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "get all data successfull",
         data: data,

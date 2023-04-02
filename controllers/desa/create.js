@@ -1,14 +1,14 @@
 const { Desa } = require("../../models");
 
 module.exports = {
-  create: async (req, res) => {
+  create: async (request, reply) => {
     try {
-      const { name, kecamatan_id } = req.body;
+      const { name, kecamatan_id } = request.body;
 
       const exist = await Desa.findOne({ where: { name } });
 
       if (exist) {
-        return res.code(409).send({
+        return reply.code(409).send({
           status: true,
           message: "desa already exist",
         });
@@ -19,7 +19,7 @@ module.exports = {
         kecamatan_id,
       });
 
-      return res.code(201).send({
+      return reply.code(201).send({
         status: true,
         message: "desa created successfully",
         data: created,

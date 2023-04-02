@@ -4,14 +4,14 @@ const jwt = require("jsonwebtoken");
 const { VERIFIED } = require("../../utils/enum.js");
 
 module.exports = {
-  verify: async (req, res) => {
+  verify: async (request, reply) => {
     try {
-      const { token } = req.body;
+      const { token } = request.body;
 
       const user = await User.findOne({ where: { email_token: token } });
 
       if (!user) {
-        return res.code(404).send({
+        return reply.code(404).send({
           message: "user not found",
         });
       }
@@ -25,7 +25,7 @@ module.exports = {
         }
       );
 
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "user account updated successfully",
         data: updatedUser,
