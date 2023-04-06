@@ -159,7 +159,7 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Alas Malang",
+          name: "Alasmalang",
           kecamatan_id: 3,
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -429,12 +429,6 @@ module.exports = {
           updatedAt: new Date(),
         },
         {
-          name: "Pesantren",
-          kecamatan_id: 6,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
           name: "Plangkapan",
           kecamatan_id: 6,
           createdAt: new Date(),
@@ -442,6 +436,12 @@ module.exports = {
         },
         {
           name: "Prembun",
+          kecamatan_id: 6,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Pesantren",
           kecamatan_id: 6,
           createdAt: new Date(),
           updatedAt: new Date(),

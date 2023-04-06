@@ -1,6 +1,7 @@
 const { Dpp } = require("../../models");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = process.env;
+const { VERIFIED } = require("../../utils/enum");
 
 module.exports = {
   createNew: async (request, reply) => {
@@ -20,7 +21,6 @@ module.exports = {
         disability,
         keterangan,
         tps_id,
-        is_new,
         is_under_age,
         user_id = user.id,
       } = request.body;
@@ -41,7 +41,7 @@ module.exports = {
         photo_KK,
         photo_KTP,
         tps_id,
-        is_new,
+        is_new: VERIFIED.TRUE,
         is_under_age,
         user_id,
       });
