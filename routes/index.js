@@ -126,6 +126,12 @@ async function routes(fastify, options) {
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
   fastify.get("/dpp/search", cdpp.filtering.filter);
   fastify.get("/dpp/count", cdpp.count.count);
+  fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
+  fastify.get("/dpp/getallDPP", cdpp.getAllByCheck.getAllByCheck);
+  fastify.put("/dpp/approve/:id", {
+    preHandler: mid.mustLogin,
+    handler: cdpp.approve.approve,
+  });
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);
