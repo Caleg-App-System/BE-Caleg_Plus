@@ -124,6 +124,16 @@ async function routes(fastify, options) {
   );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
+  fastify.get(
+    "/dpp/createNew",
+    {
+      preHandler: upload.fields([
+        { name: "photo", maxCount: 1 },
+        { name: "photo_ktp", maxCount: 1 },
+      ]),
+    },
+    cdpp.createNew.createNew
+  );
   fastify.get("/dpp/search", cdpp.filtering.filter);
   fastify.get("/dpp/count", cdpp.count.count);
   fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
