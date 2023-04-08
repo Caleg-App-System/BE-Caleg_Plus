@@ -1,4 +1,4 @@
-const { Dpp, Tps, Desa, Kecamatan, User } = require("../../models");
+const { Dpp, Tps, Desa, Kecamatan } = require("../../models");
 
 module.exports = {
   getAllByNew: async (request, reply) => {
@@ -29,22 +29,6 @@ module.exports = {
             ],
             attributes: {
               exclude: ["createdAt", "updatedAt"],
-            },
-          },
-          {
-            model: User,
-            as: "user",
-            attributes: {
-              exclude: [
-                "createdAt",
-                "updatedAt",
-                "password",
-                "email_token",
-                "email",
-                "username",
-                "photo",
-                "photo_ktp",
-              ],
             },
           },
         ],

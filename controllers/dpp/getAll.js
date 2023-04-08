@@ -1,4 +1,4 @@
-const { Dpp, Tps, Desa, Kecamatan } = require("../../models");
+const { Dpp, Tps, Desa, Kecamatan, User } = require("../../models");
 
 module.exports = {
   getAll: async (request, reply) => {
