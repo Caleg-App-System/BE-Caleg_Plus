@@ -7,6 +7,7 @@ const getAllByNew = require("./getAllByNew");
 const getAllByCheck = require("./getAllByCheck");
 const approve = require("./approve");
 const createNew = require("./createNew");
+const update = require("./update");
 
 module.exports = {
   create,
@@ -18,4 +19,5 @@ module.exports = {
   getAllByCheck,
   approve,
   createNew,
+  update,
 };

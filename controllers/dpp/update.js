@@ -6,7 +6,7 @@ const { JWT_SECRET_KEY } = process.env;
 module.exports = {
   update: async (request, reply) => {
     try {
-      const token = req.headers["authorization"].split("Bearer ")[1];
+      const token = request.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
 
       const { nik, name } = request.query;
@@ -15,7 +15,7 @@ module.exports = {
 
       const findName = await Dpp.findOne({ where: { name } });
 
-      if (!findKK || !findNik || !findName) {
+      if (!findNik || !findName) {
         return request.code(404).send({
           status: false,
           message: "data not found",
@@ -30,7 +30,7 @@ module.exports = {
           is_under_age: VERIFIED.FALSE,
           user_id: user.id,
         },
-        { where: { name, nik } }
+        { where: { name } }
       );
 
       return reply.code(200).send({

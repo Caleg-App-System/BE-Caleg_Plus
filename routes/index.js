@@ -145,6 +145,7 @@ async function routes(fastify, options) {
   fastify.get("/dpp/testcount", cdpp.count.testCount);
   fastify.get("/dpp/count/:tps_id", cdpp.count.countById);
   fastify.get("/dpp/count", cdpp.count.countByIsCheck);
+  fastify.put("/dpp/update", cdpp.update.update);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);
