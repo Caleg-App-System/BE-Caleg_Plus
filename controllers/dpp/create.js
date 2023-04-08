@@ -66,15 +66,15 @@ module.exports = {
         data.push(rowData);
       }
 
-      const find = await Dpp.findOne({ where: data["no_KK"] });
+      // const find = await Dpp.findOne({ where: data["no_KK"] });
 
-      if (find) {
-        return reply.code(409).send({
-          status: false,
-          message: "data sudah ada",
-          data: null,
-        });
-      }
+      // if (find) {
+      //   return reply.code(409).send({
+      //     status: false,
+      //     message: "data sudah ada",
+      //     data: null,
+      //   });
+      // }
 
       // Insert data to database
       const created = await Dpp.bulkCreate(data);
