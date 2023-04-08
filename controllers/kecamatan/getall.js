@@ -10,7 +10,7 @@ module.exports = {
     const { regencyId } = request.params;
     const { data } = await api.get(`/districts/${regencyId}.json`);
 
-    return request.code(200).send({
+    return reply.code(200).send({
       status: true,
       message: "get data successful",
       data: data,
