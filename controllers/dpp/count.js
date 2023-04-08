@@ -7,6 +7,7 @@ const {
   Tps,
 } = require("../../models");
 const sequelize = require("sequelize");
+const { VERIFIED } = require("../../utils/enum");
 
 module.exports = {
   countAll: async (request, reply) => {
@@ -34,7 +35,7 @@ module.exports = {
 
       return reply.code(200).send({
         status: true,
-        message: "count dpp successfully",
+        message: "count dpt successfully",
         data: result,
       });
     } catch (err) {
@@ -69,6 +70,23 @@ module.exports = {
         status: true,
         message: "berhasil menghitung data",
         data: countByDesa,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  countByIsCheck: async (request, reply) => {
+    try {
+      const { tps_id } = request.params;
+      const result = await Dpp.count({
+        group: ["tps_id"],
+        where: { is_check: VERIFIED.TRUE },
+      });
+
+      return reply.code(200).send({
+        status: true,
+        message: "count dpp successfully",
+        data: result,
       });
     } catch (err) {
       console.log(err);

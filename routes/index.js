@@ -135,7 +135,7 @@ async function routes(fastify, options) {
     cdpp.createNew.createNew
   );
   fastify.get("/dpp/search", cdpp.filtering.filter);
-  fastify.get("/dpp/count", cdpp.count.countAll);
+  fastify.get("/dpt/count", cdpp.count.countAll);
   fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
   fastify.get("/dpp/getallDPP", cdpp.getAllByCheck.getAllByCheck);
   fastify.put("/dpp/approve/:id", {
@@ -144,6 +144,7 @@ async function routes(fastify, options) {
   });
   fastify.get("/dpp/testcount", cdpp.count.testCount);
   fastify.get("/dpp/count/:tps_id", cdpp.count.countById);
+  fastify.get("/dpp/count", cdpp.count.countByIsCheck);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);
