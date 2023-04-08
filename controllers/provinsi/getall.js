@@ -9,7 +9,7 @@ module.exports = {
   getAll: async (request, reply) => {
     try {
       const { data } = await api.get("/provinces.json");
-      return res.code(200).send({
+      return reply.code(200).send({
         status: true,
         message: "get all data success",
         data: data,
