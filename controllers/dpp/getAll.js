@@ -30,6 +30,22 @@ module.exports = {
               exclude: ["createdAt", "updatedAt"],
             },
           },
+          {
+            model: User,
+            as: "user",
+            attributes: {
+              exclude: [
+                "createdAt",
+                "updatedAt",
+                "password",
+                "email_token",
+                "email",
+                "username",
+                "photo",
+                "photo_ktp",
+              ],
+            },
+          },
         ],
       });
 
