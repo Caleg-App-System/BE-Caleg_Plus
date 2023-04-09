@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  BE-Caleg_Plus:
+    image: "be-caleg_plus"
+    user: root
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: "BE-Caleg_Plus"
+    volumes:
+      - ./:/usr/src/app
+      - /app/node_modules
+      # - ./app/node_modules:/app/node_modules
+      # - ./tsg-daily-fe/node_modules:/app/node_modules
+    # command: sh ./run.sh
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
+      # ./tsg-daily-fe/node_modules: /app/node_modules
+    restart: always
