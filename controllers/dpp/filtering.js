@@ -8,7 +8,7 @@ module.exports = {
 
       const dpp = await Dpp.findOne({
         where: {
-          [Op.or]: [
+          [Op.and]: [
             {
               nik: {
                 [Op.like]: `%${nik}%`,

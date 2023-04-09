@@ -25,8 +25,8 @@ async function routes(fastify, options) {
     "/auth/register",
     {
       preHandler: upload.fields([
-        { name: "photo", maxCount: 1 },
-        { name: "photo_ktp", maxCount: 1 },
+        { name: "filePhoto", maxCount: 1 },
+        { name: "filePhoto_ktp", maxCount: 1 },
       ]),
     },
     cauth.register.register
@@ -124,12 +124,12 @@ async function routes(fastify, options) {
   );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
-  fastify.get(
+  fastify.post(
     "/dpp/createNew",
     {
       preHandler: upload.fields([
-        { name: "photo", maxCount: 1 },
-        { name: "photo_ktp", maxCount: 1 },
+        { name: "filePhoto", maxCount: 1 },
+        { name: "filePhoto_ktp", maxCount: 1 },
       ]),
     },
     cdpp.createNew.createNew

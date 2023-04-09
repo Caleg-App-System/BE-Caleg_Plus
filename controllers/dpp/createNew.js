@@ -25,7 +25,8 @@ module.exports = {
         user_id = user.id,
       } = request.body;
 
-      const { photo_KK, photo_KTP } = request.file;
+      const filePhoto = request.files["filePhoto"][0];
+      const filePhoto_ktp = request.files["filePhoto_ktp"][0];
 
       const created = await Dpp.create({
         no_KK,
@@ -38,8 +39,8 @@ module.exports = {
         address,
         disability,
         keterangan,
-        photo_KK,
-        photo_KTP,
+        photo_KK: filePhoto,
+        photo_KTP: filePhoto_ktp,
         tps_id,
         is_new: VERIFIED.TRUE,
         is_under_age,
