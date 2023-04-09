@@ -25,8 +25,8 @@ async function routes(fastify, options) {
     "/auth/register",
     {
       preHandler: upload.fields([
-        { name: "photo", maxCount: 1 },
-        { name: "photo_ktp", maxCount: 1 },
+        { name: "filePhoto", maxCount: 1 },
+        { name: "filePhoto_ktp", maxCount: 1 },
       ]),
     },
     cauth.register.register
@@ -124,7 +124,28 @@ async function routes(fastify, options) {
   );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
+  fastify.post(
+    "/dpp/createNew",
+    {
+      preHandler: upload.fields([
+        { name: "filePhoto", maxCount: 1 },
+        { name: "filePhoto_ktp", maxCount: 1 },
+      ]),
+    },
+    cdpp.createNew.createNew
+  );
   fastify.get("/dpp/search", cdpp.filtering.filter);
+  fastify.get("/dpt/count", cdpp.count.countAll);
+  fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
+  fastify.get("/dpp/getallDPP", cdpp.getAllByCheck.getAllByCheck);
+  fastify.put("/dpp/approve/:id", {
+    preHandler: mid.mustLogin,
+    handler: cdpp.approve.approve,
+  });
+  fastify.get("/dpp/testcount", cdpp.count.testCount);
+  fastify.get("/dpp/count/:tps_id", cdpp.count.countById);
+  fastify.get("/dpp/count", cdpp.count.countByIsCheck);
+  fastify.put("/dpp/update", cdpp.update.update);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);

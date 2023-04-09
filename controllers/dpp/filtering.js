@@ -4,16 +4,11 @@ const { Op } = require("sequelize");
 module.exports = {
   filter: async (request, reply) => {
     try {
-      const { name, nik, no_KK } = request.query;
+      const { name, nik } = request.query;
 
       const dpp = await Dpp.findOne({
         where: {
-          [Op.or]: [
-            {
-              no_KK: {
-                [Op.like]: `%${no_KK}%`,
-              },
-            },
+          [Op.and]: [
             {
               nik: {
                 [Op.like]: `%${nik}%`,
