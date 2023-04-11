@@ -39,10 +39,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       photo_KK: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB("long"),
       },
       photo_KTP: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB("long"),
       },
       tps_id: {
         type: Sequelize.INTEGER,

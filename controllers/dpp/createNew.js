@@ -2,6 +2,9 @@ const { Dpp } = require("../../models");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = process.env;
 const { VERIFIED } = require("../../utils/enum");
+const { file } = require("googleapis/build/src/apis/file");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = {
   createNew: async (request, reply) => {
@@ -16,6 +19,8 @@ module.exports = {
         dob_place,
         dob,
         marital_status,
+        photo_KK,
+        photo_KTP,
         gender,
         address,
         disability,
@@ -24,9 +29,6 @@ module.exports = {
         is_under_age,
         user_id = user.id,
       } = request.body;
-
-      const filePhoto = request.files["filePhoto"];
-      const filePhoto_ktp = request.files["filePhoto_ktp"];
 
       const created = await Dpp.create({
         no_KK,
@@ -39,8 +41,8 @@ module.exports = {
         address,
         disability,
         keterangan,
-        photo_KK: filePhoto,
-        photo_KTP: filePhoto_ktp,
+        photo_KK,
+        photo_KTP,
         tps_id,
         is_new: VERIFIED.TRUE,
         is_under_age,

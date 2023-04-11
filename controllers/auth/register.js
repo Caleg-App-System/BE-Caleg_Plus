@@ -18,10 +18,10 @@ module.exports = {
         address,
         working_area,
         role,
+        photo,
+        photo_ktp,
         email_token,
       } = request.body;
-      const filePhoto = request.files["filePhoto"];
-      const filePhoto_ktp = request.files["filePhoto_ktp"];
 
       const userUsername = await User.findOne({
         where: { username },
@@ -60,8 +60,8 @@ module.exports = {
         name,
         phone,
         address,
-        photo: filePhoto,
-        photo_ktp: filePhoto_ktp,
+        photo,
+        photo_ktp,
         role,
         working_area,
         email_token: token,

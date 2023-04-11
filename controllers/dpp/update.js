@@ -9,13 +9,15 @@ module.exports = {
       const token = request.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
 
-      const { nik, name } = request.query;
+      const { name } = request.query;
 
-      const findNik = await Dpp.findOne({ where: { nik } });
+      const { photo_KTP, photo_KK } = request.body;
+
+      // const findNik = await Dpp.findOne({ where: { tps_id } });
 
       const findName = await Dpp.findOne({ where: { name } });
 
-      if (!findNik || !findName) {
+      if (!findName) {
         return request.code(404).send({
           status: false,
           message: "data not found",
@@ -25,6 +27,8 @@ module.exports = {
 
       const updated = await Dpp.update(
         {
+          photo_KK,
+          photo_KTP,
           is_check: VERIFIED.TRUE,
           is_new: VERIFIED.FALSE,
           is_under_age: VERIFIED.FALSE,

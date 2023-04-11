@@ -21,16 +21,7 @@ const uploadImage = multer({ storage: upload.storage });
 async function routes(fastify, options) {
   // Auth
   fastify.post("/auth/login", cauth.login.login);
-  fastify.post(
-    "/auth/register",
-    {
-      preHandler: upload.fields([
-        { name: "filePhoto", maxCount: 1 },
-        { name: "filePhoto_ktp", maxCount: 1 },
-      ]),
-    },
-    cauth.register.register
-  );
+  fastify.post("/auth/register", cauth.register.register);
   fastify.get("/auth/getall", cauth.getAll.getAll);
   fastify.get("/auth/getbyid/:id", cauth.getbyid.getById);
   fastify.put("/auth/activate/role/:id", {
@@ -117,23 +108,10 @@ async function routes(fastify, options) {
   fastify.get("/provinsi/getall", cprov.getAll.getAllByTables);
 
   // DPP
-  fastify.post(
-    "/dpp/create",
-    { preHandler: upload.single("file") },
-    cdpp.create.create
-  );
+  fastify.post("/dpp/create", cdpp.create.create);
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
-  fastify.post(
-    "/dpp/createNew",
-    {
-      preHandler: upload.fields([
-        { name: "filePhoto", maxCount: 1 },
-        { name: "filePhoto_ktp", maxCount: 1 },
-      ]),
-    },
-    cdpp.createNew.createNew
-  );
+  fastify.post("/dpp/createNew", cdpp.createNew.createNew);
   fastify.get("/dpp/search", cdpp.filtering.filter);
   fastify.get("/dpt/count", cdpp.count.countAll);
   fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
