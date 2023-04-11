@@ -6,7 +6,7 @@ const { VERIFIED } = require("../../utils/enum");
 module.exports = {
   createNew: async (request, reply) => {
     try {
-      const token = req.headers["authorization"].split("Bearer ")[1];
+      const token = request.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
 
       const {
