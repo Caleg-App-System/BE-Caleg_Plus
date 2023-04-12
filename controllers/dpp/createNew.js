@@ -46,6 +46,7 @@ module.exports = {
         tps_id,
         is_new: VERIFIED.TRUE,
         is_under_age,
+        is_acc: VERIFIED.FALSE,
         user_id,
       });
 

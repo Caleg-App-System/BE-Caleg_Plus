@@ -11,7 +11,7 @@ module.exports = {
 
       const { name } = request.query;
 
-      const { photo_KTP, photo_KK } = request.body;
+      const { photo_KTP, photo_KK, keterangan } = request.body;
 
       // const findNik = await Dpp.findOne({ where: { tps_id } });
 
@@ -27,6 +27,7 @@ module.exports = {
 
       const updated = await Dpp.update(
         {
+          keterangan,
           photo_KK,
           photo_KTP,
           is_check: VERIFIED.TRUE,

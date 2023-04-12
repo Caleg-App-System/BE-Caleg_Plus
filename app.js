@@ -8,6 +8,7 @@ const fs = require("fs");
 // const upload = multer({ dest: "uploads/" });
 const { PORT } = process.env;
 
+fastify.register(require("@fastify/formbody"));
 fastify.register(fastifyMulter.contentParser);
 // fastify.register(require("@fastify/multipart"));
 fastify.register(require("@fastify/express"));

@@ -47,7 +47,7 @@ module.exports = {
         role: user.role,
       };
 
-      const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: "24h" });
+      const token = jwt.sign(payload, JWT_SECRET_KEY);
 
       return reply.code(200).send({
         status: true,

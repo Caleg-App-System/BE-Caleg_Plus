@@ -120,10 +120,11 @@ async function routes(fastify, options) {
     preHandler: mid.mustLogin,
     handler: cdpp.approve.approve,
   });
-  fastify.get("/dpp/testcount", cdpp.count.testCount);
-  fastify.get("/dpp/count/:tps_id", cdpp.count.countById);
+  fastify.get("/dpp/count/:tps_id", cdpp.count.countByTPSId);
   fastify.get("/dpp/count", cdpp.count.countByIsCheck);
   fastify.put("/dpp/update", cdpp.update.update);
+  fastify.get("/dpp/countGroupTPS", cdpp.count.countGroupByTPS);
+  fastify.get("/dpp/countUserId/:user_id", cdpp.count.countByUserId);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);

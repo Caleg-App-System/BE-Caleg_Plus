@@ -12,9 +12,7 @@ const { VERIFIED } = require("../../utils/enum");
 module.exports = {
   countAll: async (request, reply) => {
     try {
-      const result = await Dpp.count({
-        group: ["tps_id"],
-      });
+      const result = await Dpp.count({});
 
       return reply.code(200).send({
         status: true,
@@ -25,7 +23,7 @@ module.exports = {
       console.log(err);
     }
   },
-  countById: async (request, reply) => {
+  countByTPSId: async (request, reply) => {
     try {
       const { tps_id } = request.params;
       const result = await Dpp.count({
@@ -42,44 +40,9 @@ module.exports = {
       console.log(err);
     }
   },
-  testCount: async (request, reply) => {
-    try {
-      const countByDesa = await Dpp.findAll({
-        attributes: [
-          [sequelize.literal("`tps->Desa`.`id`"), "desa_id"],
-          [sequelize.fn("COUNT", sequelize.col("Dpp.id")), "count"],
-        ],
-        include: [
-          {
-            model: Tps,
-            as: "tps",
-            attributes: [],
-            include: [
-              {
-                model: Desa,
-                as: "desa",
-                attributes: [],
-              },
-            ],
-          },
-        ],
-        group: ["tps -> desa.id"],
-      });
-
-      return reply.code(200).send({
-        status: true,
-        message: "berhasil menghitung data",
-        data: countByDesa,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  },
   countByIsCheck: async (request, reply) => {
     try {
-      const { tps_id } = request.params;
       const result = await Dpp.count({
-        group: ["tps_id"],
         where: { is_check: VERIFIED.TRUE },
       });
 
@@ -91,5 +54,45 @@ module.exports = {
     } catch (err) {
       console.log(err);
     }
+  },
+  countGroupByTPS: async (request, reply) => {
+    try {
+      const result = await Dpp.count({ group: tps_id });
+
+      if (!result) {
+        return reply.code(404).send({
+          status: false,
+          message: "data not found",
+          data: null,
+        });
+      }
+
+      return reply.code(200).send({
+        status: true,
+        message: "count berhasil",
+        data: result,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  countByUserId: async (request, reply) => {
+    const { user_id } = request.params;
+
+    const result = await Dpp.count({ group: user_id, where: { user_id } });
+
+    if (!result) {
+      return reply.code(404).send({
+        status: false,
+        message: "data not found",
+        data: null,
+      });
+    }
+
+    return reply.code(200).send({
+      status: true,
+      message: "count data berhasil",
+      data: result,
+    });
   },
 };
