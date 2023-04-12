@@ -108,7 +108,11 @@ async function routes(fastify, options) {
   fastify.get("/provinsi/getall", cprov.getAll.getAllByTables);
 
   // DPP
-  fastify.post("/dpp/create", cdpp.create.create);
+  fastify.post(
+    "/dpp/create",
+    { preHandler: upload.single("file") },
+    cdpp.create.create
+  );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
   fastify.post("/dpp/createNew", cdpp.createNew.createNew);

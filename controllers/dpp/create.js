@@ -4,16 +4,16 @@ const xlsx = require("xlsx");
 module.exports = {
   create: async (request, reply) => {
     try {
-      if (!request.file) {
+      const file = request.file;
+      const { startCell, endCell, tps_id, noSheet } = request.body;
+
+      if (!file) {
         return reply.code(404).send({
           status: false,
           message: "file tidak di temukan",
           data: null,
         });
       }
-
-      const file = request.file;
-      const { startCell, endCell, tps_id, noSheet } = request.body;
 
       // Read file using xlsx
       const workBook = xlsx.readFile(file.path);
