@@ -12,7 +12,7 @@ services:
       - /app/node_modules
       # - ./app/node_modules:/app/node_modules
       # - ./tsg-daily-fe/node_modules:/app/node_modules
-    command: sh ./run.sh
+    # command: sh ./run.sh
     ports:
       - "3001:3001"
     environment:
