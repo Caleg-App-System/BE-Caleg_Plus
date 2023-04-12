@@ -1,5 +1,5 @@
 const getAll = require("./getall");
-const getById = require("./getbyid");
+const getById = require("./getById");
 const getByDesaId = require("./getByDesaId");
 const getAllByDesaId = require("./getAllByDesaId");
 
