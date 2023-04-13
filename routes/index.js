@@ -52,6 +52,8 @@ async function routes(fastify, options) {
     handler: cuser.updateBio.updateBio,
   });
   fastify.put("/update/working-area/:id", cuser.updateBio.updateWorkingArea);
+  fastify.put("/update/password", cuser.updatePassword.updatePassword);
+  fastify.get("/user/count", cuser.count.count);
 
   // TPS
   // fastify.post("/tps/create", ctps.create.create);
@@ -113,10 +115,16 @@ async function routes(fastify, options) {
     { preHandler: upload.single("file") },
     cdpp.create.create
   );
+  fastify.post(
+    "/dpp/createNewVersion",
+    { preHandler: upload.single("file") },
+    cdpp.create.createNewVersion
+  );
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
   fastify.post("/dpp/createNew", cdpp.createNew.createNew);
   fastify.get("/dpp/search", cdpp.filtering.filter);
+  fastify.get("/dpp/searchByName", cdpp.filtering.filterByName);
   fastify.get("/dpt/count", cdpp.count.countAll);
   fastify.get("/dpp/getallNewDPT", cdpp.getAllByNew.getAllByNew);
   fastify.get("/dpp/getallDPP", cdpp.getAllByCheck.getAllByCheck);

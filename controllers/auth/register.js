@@ -75,7 +75,7 @@ module.exports = {
         to: email.toLowerCase(),
         subject: "Email Verification",
         html: activateAccount(
-          `https://caleg-plus.netlify.app/success/verification?token=${token}`
+          `https://bitingku.com/success/verification?token=${token}`
         ),
       };
 

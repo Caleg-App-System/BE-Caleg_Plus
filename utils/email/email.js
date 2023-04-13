@@ -15,22 +15,20 @@ const oauth2Client = new google.auth.OAuth2(
   GOOGLE_REDIRECT_URI
 );
 
+// p :ehsgsepbaaqxipwh
+
 oauth2Client.setCredentials({ refresh_token: GOOGLE_REFRESH_TOKEN });
 module.exports = {
   sendEmail: async (dataEmail) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const accessToken = await oauth2Client.getAccessToken();
-
         const transport = nodemailer.createTransport({
-          service: "gmail",
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
           auth: {
-            type: "OAuth2",
-            user: GOOGLE_SENDER_EMAIL,
-            clientId: GOOGLE_CLIENT_ID,
-            clientSecret: GOOGLE_CLIENT_SECRET,
-            refreshToken: GOOGLE_REFRESH_TOKEN,
-            accessToken: accessToken,
+            user: "ofc.calegplus@gmail.com",
+            pass: "ehsgsepbaaqxipwh",
           },
         });
 
