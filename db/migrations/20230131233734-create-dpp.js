@@ -29,7 +29,16 @@ module.exports = {
       gender: {
         type: Sequelize.STRING,
       },
+      usia: {
+        type: Sequelize.INTEGER,
+      },
       address: {
+        type: Sequelize.STRING,
+      },
+      rt: {
+        type: Sequelize.STRING,
+      },
+      rw: {
         type: Sequelize.STRING,
       },
       disability: {
@@ -39,12 +48,15 @@ module.exports = {
         type: Sequelize.STRING,
       },
       photo_KK: {
-        type: Sequelize.BLOB("long"),
+        type: Sequelize.TEXT,
       },
       photo_KTP: {
-        type: Sequelize.BLOB("long"),
+        type: Sequelize.TEXT,
       },
       tps_id: {
+        type: Sequelize.INTEGER,
+      },
+      desa_id: {
         type: Sequelize.INTEGER,
       },
       is_check: {

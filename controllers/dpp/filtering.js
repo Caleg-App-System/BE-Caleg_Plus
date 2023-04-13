@@ -6,7 +6,7 @@ module.exports = {
     try {
       const { name, desa_id, rt, rw } = request.query;
 
-      const dpp = await Dpp.findOne({
+      const dpp = await Dpp.findAll({
         where: {
           [Op.and]: [
             {
