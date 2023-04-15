@@ -57,7 +57,7 @@ module.exports = {
   },
   countGroupByTPS: async (request, reply) => {
     try {
-      const result = await Dpp.count({ group: tps_id });
+      const result = await Dpp.count({ group: ["tps_id"] });
 
       if (!result) {
         return reply.code(404).send({
@@ -79,7 +79,7 @@ module.exports = {
   countByUserId: async (request, reply) => {
     const { user_id } = request.params;
 
-    const result = await Dpp.count({ group: user_id, where: { user_id } });
+    const result = await Dpp.count({ group: ["user_id"], where: { user_id } });
 
     if (!result) {
       return reply.code(404).send({
