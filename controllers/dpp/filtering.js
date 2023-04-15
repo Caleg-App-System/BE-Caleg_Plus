@@ -70,6 +70,7 @@ module.exports = {
             [Op.like]: `%${name}%`,
           },
         },
+        order: [["name", "ASC"]],
         include: [
           {
             model: Tps,
