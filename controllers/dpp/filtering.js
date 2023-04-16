@@ -11,22 +11,22 @@ module.exports = {
           [Op.and]: [
             {
               name: {
-                [Op.like]: `%${name}%`,
+                [Op.like]: `${name}%`,
               },
             },
             {
               desa_id: {
-                [Op.like]: `%${desa_id}%`,
+                [Op.like]: `${desa_id}%`,
               },
             },
             {
               rt: {
-                [Op.like]: `%${rt}%`,
+                [Op.like]: `${rt}%`,
               },
             },
             {
               rw: {
-                [Op.like]: `%${rw}%`,
+                [Op.like]: `${rw}%`,
               },
             },
           ],
@@ -67,7 +67,7 @@ module.exports = {
       const dpp = await Dpp.findAll({
         where: {
           name: {
-            [Op.like]: `%${name}%`,
+            [Op.like]: `${name}%`,
           },
         },
         order: [["name", "ASC"]],

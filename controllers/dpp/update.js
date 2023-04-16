@@ -9,7 +9,7 @@ module.exports = {
       const token = request.headers["authorization"].split("Bearer ")[1];
       const user = jwt.verify(token, JWT_SECRET_KEY);
 
-      const { name } = request.query;
+      const { name, usia } = request.query;
 
       const { photo_KTP, photo_KK, keterangan } = request.body;
 
@@ -35,7 +35,7 @@ module.exports = {
           is_under_age: VERIFIED.FALSE,
           user_id: user.id,
         },
-        { where: { name } }
+        { where: { name, usia } }
       );
 
       return reply.code(200).send({
