@@ -22,4 +22,6 @@ module.exports = {
   approve,
   createNew,
   update,
+  deleteNew,
+  updateDptAdmin,
 };
