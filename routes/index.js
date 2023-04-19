@@ -137,6 +137,14 @@ async function routes(fastify, options) {
   fastify.put("/dpp/update", cdpp.update.update);
   fastify.get("/dpp/countGroupTPS", cdpp.count.countGroupByTPS);
   fastify.get("/dpp/countUserId/:user_id", cdpp.count.countByUserId);
+  fastify.put("/dpp/deleteDpp/:id", {
+    preHandler: mid.mustLogin,
+    handler: cdpp.update.deleteByAdmin,
+  });
+  fastify.delete("/dpp/deleteNewDpt/:id", {
+    preHandler: mid.mustLogin,
+    handler: cdpp.deleteNew.deleteNew,
+  });
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);
