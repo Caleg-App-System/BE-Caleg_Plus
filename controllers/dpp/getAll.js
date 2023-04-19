@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 module.exports = {
   getAll: async (request, reply) => {
     try {
-      const { page = 1, limit = 10, tps_id = "", desa_id = "" } = request.query; // Mengambil query page dan fields
+      const { page = 1, limit = 10, tps_id = 1, desa_id = 1 } = request.query; // Mengambil query page dan fields
       const offset = (page - 1) * limit; // Menghitung offset
 
       const { count, rows } = await Dpp.findAndCountAll({
