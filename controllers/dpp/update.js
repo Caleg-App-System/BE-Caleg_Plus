@@ -47,4 +47,38 @@ module.exports = {
       console.log(err);
     }
   },
+
+  deleteByAdmin: async (request, reply) => {
+    try {
+      const { id } = request.params;
+
+      const dpp = await Dpp.findOne({ where: { id } });
+
+      if (!dpp) {
+        return reply.code(404).send({
+          status: false,
+          message: "data not found",
+          data: null,
+        });
+      }
+
+      const deleteDpp = await Dpp.update(
+        {
+          photo_KTP: null,
+          is_check: null,
+          is_new: null,
+          is_under_age: null,
+          user_id: null,
+        },
+        { where: { id } },
+      );
+
+      return reply.code(200).send({
+        status: true,
+        message: `berhasil menghapus data potensial ${dpp.name}`,
+        data: deleteDpp,
+      });
+    } catch (err) {
+    }
+  },
 };

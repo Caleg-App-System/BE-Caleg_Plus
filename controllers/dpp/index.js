@@ -9,6 +9,7 @@ const approve = require("./approve");
 const createNew = require("./createNew");
 const update = require("./update");
 const updateDptAdmin = require("./updateDptAdmin");
+const deleteNew = require("./deleteNew");
 
 module.exports = {
   create,
@@ -21,5 +22,4 @@ module.exports = {
   approve,
   createNew,
   update,
-  updateDptAdmin,
 };
