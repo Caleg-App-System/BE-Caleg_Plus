@@ -22,7 +22,8 @@ async function routes(fastify, options) {
   // Auth
   fastify.post("/auth/login", cauth.login.login);
   fastify.post("/auth/register", cauth.register.register);
-  fastify.get("/auth/getall", cauth.getAll.getAll);
+  fastify.get("/auth/getallfalse", cauth.getAll.getAllIsArchiveFalse);
+  fastify.get("/auth/getalltrue", cauth.getAll.getAllIsArchiveTrue);
   fastify.get("/auth/getbyid/:id", cauth.getbyid.getById);
   fastify.put("/auth/activate/role/:id", {
     preHandler: mid.mustLogin,
@@ -137,6 +138,7 @@ async function routes(fastify, options) {
   fastify.put("/dpp/update", cdpp.update.update);
   fastify.get("/dpp/countGroupTPS", cdpp.count.countGroupByTPS);
   fastify.get("/dpp/countUserId/:user_id", cdpp.count.countByUserId);
+  fastify.put("/dpp/updateNew", cdpp.updateDptAdmin.update);
 
   // Caleg
   fastify.post("/caleg/create", ccaleg.create.create);

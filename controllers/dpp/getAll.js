@@ -1,12 +1,27 @@
-const { Dpp, Tps, Desa, Kecamatan } = require("../../models");
+const { Dpp, Tps, Desa, Kecamatan, sequelize } = require("../../models");
+const { Op } = require("sequelize");
 
 module.exports = {
   getAll: async (request, reply) => {
     try {
-      const { page = 1, limit = 10 } = request.query; // Mengambil query page dan fields
+      const { page = 1, limit = 10, tps_id = "", desa_id = "" } = request.query; // Mengambil query page dan fields
       const offset = (page - 1) * limit; // Menghitung offset
 
       const { count, rows } = await Dpp.findAndCountAll({
+        where: {
+          [Op.and]: [
+            {
+              tps_id: {
+                [Op.like]: `${tps_id}%`,
+              },
+            },
+            {
+              desa_id: {
+                [Op.like]: `${desa_id}%`,
+              },
+            },
+          ],
+        },
         include: [
           {
             model: Tps,
@@ -15,6 +30,9 @@ module.exports = {
               {
                 model: Desa,
                 as: "desa",
+                where: {
+                  id: desa_id,
+                },
                 include: [
                   {
                     model: Kecamatan,
@@ -55,7 +73,7 @@ module.exports = {
           data: rows,
           totalPages: totalPages,
           currentPage: page,
-          count,
+          jumlahData: count,
         },
       });
     } catch (err) {

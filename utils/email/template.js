@@ -49,7 +49,7 @@ const header = `
   }
   </style>
 
-  <title>Verify Your Account!</title>
+  <title>Verifikasi Akunmu!</title>
 </head>
 
 <body style="background-color: #FF8C00; padding: 20px;">

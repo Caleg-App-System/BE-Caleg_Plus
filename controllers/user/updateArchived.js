@@ -3,12 +3,12 @@ const { VERIFIED } = require("../../utils/enum.js");
 
 module.exports = {
   updateArchivedTrue: async (request, reply) => {
-    const { username } = req.params;
+    const { username } = request.params;
 
     const find = await User.findOne({ where: { username } });
 
     if (!find) {
-      return res.code(404).send({
+      return reply.code(404).send({
         status: false,
         message: "data not found",
         data: null,
@@ -22,19 +22,19 @@ module.exports = {
       { where: { username } }
     );
 
-    return res.code(200).send({
+    return reply.code(200).send({
       status: true,
       message: `User dengan nama ${username} berhasil di arsipkan`,
       data: updated,
     });
   },
-  updateArchivedFalse: async (req, res) => {
-    const { username } = req.params;
+  updateArchivedFalse: async (request, reply) => {
+    const { username } = request.params;
 
     const find = await User.findOne({ where: { username } });
 
     if (!find) {
-      return res.code(404).send({
+      return reply.code(404).send({
         status: false,
         message: "data not found",
         data: null,
@@ -48,7 +48,7 @@ module.exports = {
       { where: { username } }
     );
 
-    return res.code(200).send({
+    return reply.code(200).send({
       status: true,
       message: `User dengan nama ${username} berhasil di aktifkan`,
       data: updated,
