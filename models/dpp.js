@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       usia: DataTypes.INTEGER,
       rt: DataTypes.INTEGER,
       rw: DataTypes.INTEGER,
+      phone: DataTypes.STRING,
       is_check: DataTypes.BOOLEAN,
       is_under_age: DataTypes.BOOLEAN,
       is_new: DataTypes.BOOLEAN,

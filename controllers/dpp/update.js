@@ -11,7 +11,8 @@ module.exports = {
 
       const { name, usia } = request.query;
 
-      const { photo_KTP, photo_KK, keterangan } = request.body;
+      const { no_KK, nik, phone, photo_KTP, photo_KK, keterangan } =
+        request.body;
 
       // const findNik = await Dpp.findOne({ where: { tps_id } });
 
@@ -27,6 +28,9 @@ module.exports = {
 
       const updated = await Dpp.update(
         {
+          no_KK,
+          nik,
+          phone,
           keterangan,
           photo_KK,
           photo_KTP,
@@ -70,7 +74,7 @@ module.exports = {
           is_under_age: null,
           user_id: null,
         },
-        { where: { id } },
+        { where: { id } }
       );
 
       return reply.code(200).send({
@@ -78,7 +82,6 @@ module.exports = {
         message: `berhasil menghapus data potensial ${dpp.name}`,
         data: deleteDpp,
       });
-    } catch (err) {
-    }
+    } catch (err) {}
   },
 };
