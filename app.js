@@ -8,9 +8,27 @@ const fs = require("fs");
 // const upload = multer({ dest: "uploads/" });
 const { PORT } = process.env;
 
-fastify.register(require("@fastify/formbody"));
-fastify.register(fastifyMulter.contentParser);
-// fastify.register(require("@fastify/multipart"));
+fastify.register(
+  require("@fastify/formbody", {
+    bodyLimit: 1024 * 1024,
+    parser: {
+      // Mengatur opsi payload
+      multipart: true,
+      formidable: {
+        maxFileSize: 50 * 1024 * 1024, // Mengatur batasan ukuran file menjadi 10MB (10 megabyte)
+      },
+    },
+  })
+);
+// fastify.register(fastifyMulter.contentParser);
+fastify.register(
+  require("@fastify/multipart", {
+    attachFieldsToBody: true,
+    limits: {
+      fileSize: 50 * 1024 * 1024, // Set the maximum file size limit (10MB in this example)
+    },
+  })
+);
 fastify.register(require("@fastify/express"));
 
 fastify.register(cors, {

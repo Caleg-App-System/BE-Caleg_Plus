@@ -30,6 +30,16 @@ async function routes(fastify, options) {
     handler: cauth.update.activateRole,
   });
   fastify.put("/verify", cauth.activate.verify);
+  fastify.post(
+    "/auth/newRegister",
+    {
+      preHandler: upload.fields([
+        { name: "photo", maxCount: 1 },
+        { name: "photo_ktp", maxCount: 1 },
+      ]),
+    },
+    cauth.register.Newregister
+  );
 
   // User
   fastify.put(
@@ -124,6 +134,16 @@ async function routes(fastify, options) {
   fastify.get("/dpp/getall", cdpp.getAll.getAll);
   fastify.get("/dpp/getById/:id", cdpp.getById.getById);
   fastify.post("/dpp/createNew", cdpp.createNew.createNew);
+  fastify.post(
+    "/dpp/createNew1",
+    {
+      preHandler: upload.fields([
+        { name: "photo_KK", maxCount: 1 },
+        { name: "photo_KTP", maxCount: 1 },
+      ]),
+    },
+    cdpp.createNew.createNewVersion
+  );
   fastify.get("/dpp/search", cdpp.filtering.filter);
   fastify.get("/dpp/searchByName", cdpp.filtering.filterByName);
   fastify.get("/dpt/count", cdpp.count.countAll);
@@ -136,6 +156,16 @@ async function routes(fastify, options) {
   fastify.get("/dpp/count/:tps_id", cdpp.count.countByTPSId);
   fastify.get("/dpp/count", cdpp.count.countByIsCheck);
   fastify.put("/dpp/update", cdpp.update.update);
+  fastify.put(
+    "/dpp/updateNewVersion",
+    {
+      preHandler: upload.fields([
+        { name: "photo_KK", maxCount: 1 },
+        { name: "photo_KTP", maxCount: 1 },
+      ]),
+    },
+    cdpp.update.updateNewVersion
+  );
   fastify.get("/dpp/countGroupTPS", cdpp.count.countGroupByTPS);
   fastify.get("/dpp/countUserId/:user_id", cdpp.count.countByUserId);
   fastify.put("/dpp/deleteDpp/:id", {

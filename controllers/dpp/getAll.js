@@ -11,13 +11,13 @@ module.exports = {
         where: {
           [Op.and]: [
             {
-              tps_id: {
-                [Op.like]: `${tps_id}%`,
+              desa_id: {
+                [Op.like]: `${desa_id}%`,
               },
             },
             {
-              desa_id: {
-                [Op.like]: `${desa_id}%`,
+              tps_id: {
+                [Op.like]: `${tps_id}%`,
               },
             },
           ],
