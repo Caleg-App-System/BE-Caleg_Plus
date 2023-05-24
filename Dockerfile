@@ -14,7 +14,7 @@ RUN apk add --no-cache \
 RUN mkdir -p app/node_modules \
     && chown -R node:node /app \
     && cd /app/node_modules \
-    && npm i canvas
+    && npm i canvas image-to-base64
 WORKDIR /app
 
 COPY package*.json ./
