@@ -1,9 +1,10 @@
 const { Dpp, Tps, Desa, Kecamatan, User } = require("../../models");
 const { Op } = require("sequelize");
+
 module.exports = {
   getAllByCheck: async (request, reply) => {
     try {
-      const { page = 1, limit = 10, user_id = 1 } = request.query;
+      const { page = 1, limit = 10, user_id = 16 } = request.query;
       const offset = (page - 1) * limit;
       const { count, rows } = await Dpp.findAndCountAll({
         where: {
