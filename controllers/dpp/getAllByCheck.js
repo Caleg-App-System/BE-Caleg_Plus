@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 module.exports = {
   getAllByCheck: async (request, reply) => {
     try {
-      const { page = 1, limit = 10, user_id = 16 } = request.query;
+      const { page = 1, limit, user_id = 16, desa_id } = request.query;
       const offset = (page - 1) * limit;
       const { count, rows } = await Dpp.findAndCountAll({
         where: {
@@ -12,6 +12,11 @@ module.exports = {
             {
               user_id: {
                 [Op.like]: `${user_id}`,
+              },
+            },
+            {
+              desa_id: {
+                [Op.like]: `${desa_id}`,
               },
             },
             {
