@@ -54,6 +54,7 @@ module.exports = {
         ],
         offset: Number(offset),
         limit: Number(limit),
+        order: [["desa_id", "ASC"]],
       });
 
       if ((!count, !rows)) {
